@@ -11,4 +11,6 @@ public interface DataService {
     Map<String, List<Feed>> filterByPublisher(List<Feed> data);
     List<Feed> sortFeedAsc(List<Feed> data);
     List<Feed> sortFeedDesc(List<Feed> data);
+    List<Feed> getFavouriteFeeds();
+    List<Feed> getOfflineFeeds();
 }

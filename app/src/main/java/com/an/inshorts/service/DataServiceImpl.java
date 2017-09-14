@@ -8,6 +8,7 @@ import com.an.inshorts.utils.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -65,5 +66,35 @@ public class DataServiceImpl extends AbstractServiceImpl implements DataService 
             }
         }
         return finalMap;
+    }
+
+
+
+    @Override
+    public List<Feed> getFavouriteFeeds() {
+        List<Feed> feeds = new ArrayList<>();
+        Map<Long, Feed> faves = feedModule.getFavourites();
+
+        Iterator<Map.Entry<Long, Feed>> iterator = faves.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Long, Feed> entry = iterator.next();
+            feeds.add(entry.getValue());
+        }
+        return feeds;
+    }
+
+
+
+    @Override
+    public List<Feed> getOfflineFeeds() {
+        List<Feed> feeds = new ArrayList<>();
+        Map<Long, Feed> faves = feedModule.getOfflineFeeds();
+
+        Iterator<Map.Entry<Long, Feed>> iterator = faves.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Long, Feed> entry = iterator.next();
+            feeds.add(entry.getValue());
+        }
+        return feeds;
     }
 }

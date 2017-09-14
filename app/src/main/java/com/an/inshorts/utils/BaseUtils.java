@@ -16,6 +16,8 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import static com.an.inshorts.BaseConstants.LOCALE_CACHE_PATH;
+
 public class BaseUtils {
 
     /*
@@ -61,5 +63,35 @@ public class BaseUtils {
         Type listType = new TypeToken<List<Feed>>() {}.getType();
         List<Feed> feeds = new Gson().fromJson(feedJson, listType);
         return feeds;
+    }
+
+
+
+
+    /*
+     * You can use this method to store the
+     * request response from your local cache
+     * */
+
+    public static void writeObjectToDisk(final Object object) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ObjectUtil objDataStream = new ObjectUtil();
+                objDataStream.writeObjects(object, LOCALE_CACHE_PATH);
+            }
+        }).start();
+    }
+
+
+
+    /*
+     * You can use this method to retrieve the
+     * request response from your local cache
+     * */
+
+    public static Object readObjectFromDisk() {
+        ObjectUtil objDataStream = new ObjectUtil();
+        return objDataStream.readObjects(LOCALE_CACHE_PATH);
     }
 }

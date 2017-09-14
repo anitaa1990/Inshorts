@@ -6,6 +6,8 @@ import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
 import com.an.inshorts.callback.RESTListener;
+import com.an.inshorts.db.DbExecutorService;
+import com.an.inshorts.db.FeedDbTask;
 import com.an.inshorts.model.Feed;
 import com.an.inshorts.rest.RESTAPITask;
 import com.an.inshorts.rest.RESTExecutorService;
@@ -111,5 +113,61 @@ public class ExampleInstrumentedTest {
             System.out.println(s.getKey());
             System.out.println(s.getValue().size());
         }
+    }
+
+
+    @Test
+    public void localCacheFavouritesTest() throws InterruptedException {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        List<Feed> feedList = BaseUtils.loadDummyData(appContext);
+
+        Feed favouriteFeed1 = feedList.get(1);
+        DbExecutorService.submit(new FeedDbTask(appContext, BaseConstants.TYPE_ADD_FAVOURITES, favouriteFeed1));
+        Thread.sleep(1000);
+
+        DataService dataService = new DataServiceImpl(appContext);
+        List<Feed> favourites = dataService.getFavouriteFeeds();
+        System.out.println("Adding Favourites I: " + favourites.size());
+
+        Feed favouriteFeed2 = feedList.get(3);
+        DbExecutorService.submit(new FeedDbTask(appContext, BaseConstants.TYPE_ADD_FAVOURITES, favouriteFeed2));
+        Thread.sleep(1000);
+
+        favourites = dataService.getFavouriteFeeds();
+        System.out.println("Adding Favourites II: " + favourites.size());
+
+        DbExecutorService.submit(new FeedDbTask(appContext, BaseConstants.TYPE_REMOVE_FAVOURITES, favouriteFeed2));
+        Thread.sleep(1000);
+
+        favourites = dataService.getFavouriteFeeds();
+        System.out.println("Removing Favourites II: " + favourites.size());
+    }
+
+
+    @Test
+    public void localCacheOfflineFeedsTest() throws InterruptedException {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        List<Feed> feedList = BaseUtils.loadDummyData(appContext);
+
+        Feed favouriteFeed1 = feedList.get(10);
+        DbExecutorService.submit(new FeedDbTask(appContext, BaseConstants.TYPE_ADD_OFFLINE, favouriteFeed1));
+        Thread.sleep(1000);
+
+        DataService dataService = new DataServiceImpl(appContext);
+        List<Feed> offlineFeeds = dataService.getOfflineFeeds();
+        System.out.println("Adding Offline I: " + offlineFeeds.size());
+
+        Feed favouriteFeed2 = feedList.get(20);
+        DbExecutorService.submit(new FeedDbTask(appContext, BaseConstants.TYPE_ADD_OFFLINE, favouriteFeed2));
+        Thread.sleep(1000);
+
+        offlineFeeds = dataService.getOfflineFeeds();
+        System.out.println("Adding Offline II: " + offlineFeeds.size());
+
+        DbExecutorService.submit(new FeedDbTask(appContext, BaseConstants.TYPE_REMOVE_OFFLINE, favouriteFeed2));
+        Thread.sleep(1000);
+
+        offlineFeeds = dataService.getOfflineFeeds();
+        System.out.println("Removing Offline II: " + offlineFeeds.size());
     }
 }
