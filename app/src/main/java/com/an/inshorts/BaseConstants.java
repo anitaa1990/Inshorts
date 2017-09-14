@@ -6,4 +6,6 @@ public interface BaseConstants {
     String PATH_NEWS_FEED = "/newsjson";
 
     String METHOD_NEWS_FEED = "news_feed";
+
+    String INTENT_URL = "webview_url";
 }

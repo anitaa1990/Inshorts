@@ -2,6 +2,7 @@
     package="com.an.inshorts">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -9,6 +10,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".activity.CustomWebViewActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
 
     </application>
 
