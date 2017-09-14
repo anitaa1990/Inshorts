@@ -31,4 +31,7 @@ dependencies {
      * My own library for implementation of custom fonts
      *  */
     compile 'com.an.customfontview:customfont:0.1.0'
+
+    compile 'com.google.code.gson:gson:2.5'
+    compile 'com.android.volley:volley:1.0.0'
 }
