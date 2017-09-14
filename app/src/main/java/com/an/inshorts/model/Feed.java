@@ -24,7 +24,7 @@ public class Feed implements Serializable {
     private String hostname;
 
     @SerializedName("TIMESTAMP")
-    private String timestamp;
+    private Long timestamp;
 
     public Long getId() {
         return id;
@@ -74,11 +74,11 @@ public class Feed implements Serializable {
         this.hostname = hostname;
     }
 
-    public String getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 }

@@ -6,12 +6,21 @@ import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
 import com.an.inshorts.callback.RESTListener;
+import com.an.inshorts.model.Feed;
 import com.an.inshorts.rest.RESTAPITask;
 import com.an.inshorts.rest.RESTExecutorService;
+import com.an.inshorts.service.DataService;
+import com.an.inshorts.service.DataServiceImpl;
+import com.an.inshorts.service.FeedService;
+import com.an.inshorts.utils.BaseUtils;
+import com.an.inshorts.utils.CollectionUtils;
 import com.android.volley.VolleyError;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -49,5 +58,58 @@ public class ExampleInstrumentedTest {
 
         RESTExecutorService.submit(new RESTAPITask(appContext, BaseConstants.METHOD_NEWS_FEED, restListener));
         Thread.sleep(2500);
+    }
+
+
+    @Test
+    public void sortFeedByDateDescTest() {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        List<Feed> feedList = BaseUtils.loadDummyData(appContext);
+        List<Feed> sortedList = CollectionUtils.sortFeedDesc(feedList);
+        for(Feed feed : sortedList) {
+            System.out.println("-------------------");
+            System.out.println(feed.getId());
+            System.out.println(feed.getTimestamp());
+        }
+    }
+
+    @Test
+    public void sortFeedByDateAscTest() {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        List<Feed> feedList = BaseUtils.loadDummyData(appContext);
+        List<Feed> sortedList = CollectionUtils.sortFeedAsc(feedList);
+        for(Feed feed : sortedList) {
+            System.out.println("-------------------");
+            System.out.println(feed.getId());
+            System.out.println(feed.getTimestamp());
+        }
+    }
+
+    @Test
+    public void filterByCategoryTest() {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        List<Feed> feedList = BaseUtils.loadDummyData(appContext);
+
+        DataService dataService = new DataServiceImpl(appContext);
+        Map<String, List<Feed>> filteredData = dataService.filterByCategory(feedList);
+        for(Map.Entry<String, List<Feed>> s : filteredData.entrySet()) {
+            System.out.println("-------------------");
+            System.out.println(s.getKey());
+            System.out.println(s.getValue().size());
+        }
+    }
+
+    @Test
+    public void filterByPublisherTest() {
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        List<Feed> feedList = BaseUtils.loadDummyData(appContext);
+
+        DataService dataService = new DataServiceImpl(appContext);
+        Map<String, List<Feed>> filteredData = dataService.filterByPublisher(feedList);
+        for(Map.Entry<String, List<Feed>> s : filteredData.entrySet()) {
+            System.out.println("-------------------");
+            System.out.println(s.getKey());
+            System.out.println(s.getValue().size());
+        }
     }
 }
