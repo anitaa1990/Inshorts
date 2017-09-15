@@ -27,5 +27,7 @@ public class CustomWebViewClient extends WebViewClient {
     @Override
     public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
         super.onReceivedError(view, request, error);
+
+        //TODO: if no internet connection, inform the user gracefully!
     }
 }
