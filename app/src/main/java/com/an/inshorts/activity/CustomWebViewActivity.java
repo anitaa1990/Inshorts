@@ -11,6 +11,7 @@ import com.an.inshorts.R;
 import com.an.inshorts.utils.ConnectivityStatus;
 import com.an.inshorts.views.CustomWebViewClient;
 
+import static com.an.inshorts.BaseConstants.INTENT_CATEGORY_NAME;
 import static com.an.inshorts.BaseConstants.INTENT_URL;
 
 public class CustomWebViewActivity extends BaseActivity {
@@ -22,6 +23,11 @@ public class CustomWebViewActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_webview);
+
+        initToolbar();
+        updateToolbarTitle(getIntent().getStringExtra(INTENT_CATEGORY_NAME));
+        hideFilters();
+        updateBackButton();
 
         progressView = findViewById(R.id.progress_view);
 
@@ -39,7 +45,7 @@ public class CustomWebViewActivity extends BaseActivity {
 
         webView.setWebChromeClient(new WebChromeClient() {
             public void onProgressChanged(WebView view, int progress) {
-                if (progress == 100) progressView.setVisibility(View.GONE);
+                if (progress >= 90) progressView.setVisibility(View.GONE);
             }
         });
 

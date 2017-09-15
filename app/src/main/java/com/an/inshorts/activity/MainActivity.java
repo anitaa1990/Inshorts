@@ -41,6 +41,9 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         initToolbar();
+        updateMenuButton();
+        displayFilterBtn();
+        updateToolbarTitle(getString(R.string.app_name));
 
         viewPager = (CustomViewPager) findViewById(R.id.viewpager);
         List<Feed> dummyData = BaseUtils.loadDummyData(this);

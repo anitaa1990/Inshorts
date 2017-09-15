@@ -31,9 +31,33 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         filterBtn.setOnClickListener(this);
     }
 
+    protected void updateBackButton() {
+        menuBtn.setImageResource(R.drawable.ic_back);
+    }
+
+    protected void updateMenuButton() {
+        menuBtn.setImageResource(R.drawable.ic_side_menu);
+    }
+
     protected void updateToolbarTitle(String text) {
         toolbarTitle.setText(text);
         toolbarTitle.setTextSize(new Float(getResources().getDimension(R.dimen.font_xxxsmall)));
+    }
+
+    protected void hideFilters() {
+        filterBtn.setVisibility(View.GONE);
+    }
+
+    protected void showFilters() {
+        filterBtn.setVisibility(View.VISIBLE);
+    }
+
+    protected void displaySortBtn() {
+        filterBtn.setImageResource(R.drawable.ic_sort);
+    }
+
+    protected void displayFilterBtn() {
+        filterBtn.setImageResource(R.drawable.ic_filters);
     }
 
     @Override

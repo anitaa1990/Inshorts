@@ -12,6 +12,7 @@ public interface BaseConstants {
 
     String METHOD_NEWS_FEED = "news_feed";
     String INTENT_URL = "webview_url";
+    String INTENT_CATEGORY_NAME = "categoryName";
 
 
     String TYPE_ADD_OFFLINE = "add_offline";

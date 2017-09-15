@@ -52,6 +52,10 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.Custom
         return feedList.size();
     }
 
+    public Feed getItem(int position) {
+        return feedList.get(position);
+    }
+
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
         private View rootView;
