@@ -1,5 +1,10 @@
 package com.an.inshorts;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public interface BaseConstants {
 
     String BASE_URL = "http://starlord.hackerearth.com";
@@ -16,4 +21,12 @@ public interface BaseConstants {
 
 
     String LOCALE_CACHE_PATH = "/data/data/com.an.inshorts/inshorts.dat";
+
+    Map<String, String> CATEGORY = new HashMap()
+    {{
+        put("b", "Business");
+        put("t", "Tech");
+        put("e", "Movies");
+        put("m", "Health");
+    }};
 }

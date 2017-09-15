@@ -6,4 +6,18 @@
 
     <color name="toolbar_text_color">#010101</color>
     <color name="activity_main_bg_color">#e9eaed</color>
+    <color name="feed_source_text_color">#999999</color>
+    <color name="feed_source_line_color">#ebebeb</color>
+
+    <color name="color_1">#6555fd</color>
+    <color name="color_2">#faae55</color>
+    <color name="color_3">#37a7ef</color>
+    <color name="color_4">#6555fd</color>
+
+    <integer-array name="colors">
+        <item >@color/color_1</item>
+        <item >@color/color_2</item>
+        <item >@color/color_3</item>
+        <item >@color/color_4</item>
+    </integer-array>
 </resources>

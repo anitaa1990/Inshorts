@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+
+    <FrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/margin_xxxxlarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/category_img"
+                android:layout_marginLeft="@dimen/margin_xxxxxlarge"
+                android:adjustViewBounds="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.an.customfontview.CustomTextView
+                android:layout_marginTop="@dimen/margin"
+                android:layout_below="@+id/category_img"
+                android:id="@+id/category_name"
+                android:layout_marginLeft="@dimen/margin_xxxxxlarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_xlarge"
+                android:text="Tech"
+                android:textColor="@android:color/white"
+                app:textFontPath="fonts/tiempos_h_medium.otf"/>
+
+        </RelativeLayout>
+
+
+        <com.an.inshorts.views.AspectRatioCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:background="@android:color/white"
+            android:layout_marginLeft="@dimen/margin_xxxxxlarge"
+            android:layout_marginRight="@dimen/margin_xxxxxlarge"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="6dp"
+            app:cardMaxElevation="6dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="@dimen/margin_large"
+                android:clipToPadding="false"
+                android:id="@+id/feed_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.an.inshorts.views.AspectRatioCardView>
+
+
+    </FrameLayout>
+
+</LinearLayout>

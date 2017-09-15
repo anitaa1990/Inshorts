@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">InShorts</string>
+
+
+    <integer-array name="category_icons">
+        <item>@drawable/ic_business</item>
+        <item>@drawable/ic_tech</item>
+        <item>@drawable/ic_business</item>
+        <item>@drawable/ic_tech</item>
+    </integer-array>
 </resources>

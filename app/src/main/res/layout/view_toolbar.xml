@@ -40,7 +40,7 @@
                 <com.an.customfontview.CustomTextView
                     android:layout_marginLeft="@dimen/margin"
                     android:id="@+id/toolbar_title"
-                    android:textSize="@dimen/font_xxlarge"
+                    android:textSize="@dimen/font_xlarge"
                     android:text="@string/app_name"
                     android:textColor="@color/toolbar_text_color"
                     android:layout_centerInParent="true"

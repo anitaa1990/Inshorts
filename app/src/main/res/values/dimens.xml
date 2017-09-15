@@ -32,7 +32,9 @@
     <dimen name="margin_xxxlarge">29dip</dimen>
     <dimen name="margin_xxxxlarge">35dip</dimen>
     <dimen name="margin_xxxxxlarge">40dip</dimen>
+    <dimen name="margin_xxxxxxlarge">60dp</dimen>
 
+    <dimen name="font_xxxxxsmall">4sp</dimen>
     <dimen name="font_xxxxsmall">6sp</dimen>
     <dimen name="font_xxxsmall">8sp</dimen>
     <dimen name="font_xxsmall">10sp</dimen>
@@ -45,5 +47,6 @@
     <dimen name="font_large">20sp</dimen>
     <dimen name="font_xlarge">22sp</dimen>
     <dimen name="font_xxlarge">25sp</dimen>
+    <dimen name="font_xxxlarge">35sp</dimen>
 
 </resources>
