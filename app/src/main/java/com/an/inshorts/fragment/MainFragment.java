@@ -1,5 +1,6 @@
 package com.an.inshorts.fragment;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,15 +13,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.an.inshorts.R;
+import com.an.inshorts.activity.FeedListActivity;
 import com.an.inshorts.adapter.FeedListAdapter;
 import com.an.inshorts.model.Feed;
+import com.an.inshorts.views.RecyclerItemClickListener;
 
 import java.io.Serializable;
 import java.util.List;
 
 import static com.an.inshorts.BaseConstants.CATEGORY;
 
-public class MainFragment extends BaseFragment {
+public class MainFragment extends BaseFragment implements RecyclerItemClickListener.OnItemClickListener {
 
     private String categoryName;
     private List<Feed> categories;
@@ -28,6 +31,7 @@ public class MainFragment extends BaseFragment {
 
     private TextView categoryTxt;
     private ImageView categoryImg;
+
     private RecyclerView recyclerView;
     private FeedListAdapter adapter;
 
@@ -56,6 +60,7 @@ public class MainFragment extends BaseFragment {
 
         recyclerView = rootView.findViewById(R.id.feed_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(activity, this));
 
         adapter = new FeedListAdapter(activity, categories);
         recyclerView.setAdapter(adapter);
@@ -68,5 +73,19 @@ public class MainFragment extends BaseFragment {
         categoryImg.setImageResource(categoryIcons.getResourceId(position, -1));
 
         return rootView;
+    }
+
+
+    @Override
+    public void onItemClick(View childView, int position) {
+        Intent intent = new Intent(activity, FeedListActivity.class);
+        intent.putExtra("feed", (Serializable) categories);
+        intent.putExtra("categoryName", categoryTxt.getText().toString());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemLongPress(View childView, int position) {
+
     }
 }

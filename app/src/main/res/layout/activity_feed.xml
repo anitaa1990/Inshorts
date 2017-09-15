@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:elevation="0dp" >
+
+
+            <include layout="@layout/view_toolbar" />
+
+        <android.support.v7.widget.SearchView
+
+            android:background="@drawable/bg_search"
+            android:layout_marginLeft="@dimen/margin_xxxxlarge"
+            android:layout_marginRight="@dimen/margin_xxxxxlarge"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginBottom="@dimen/margin"
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:searchIcon="@drawable/ic_search"
+            app:searchHintIcon="@null"
+            app:goIcon="@drawable/ic_search"
+            app:closeIcon="@null"
+            style="@style/SearchViewTheme"
+            app:queryHint="@string/search_hint"
+            app:defaultQueryHint="@string/search_hint"/>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:background="@android:color/white"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:id="@+id/feed_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false" />
+
+
+</android.support.design.widget.CoordinatorLayout>

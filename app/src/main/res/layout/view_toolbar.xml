@@ -18,6 +18,7 @@
     android:contentInsetEnd="0dp"
     app:contentInsetRight="0dp"
     app:contentInsetEnd="0dp"
+    app:layout_scrollFlags="scroll|enterAlways"
     android:theme="@style/Base.ThemeOverlay.AppCompat.Dark">
 
 

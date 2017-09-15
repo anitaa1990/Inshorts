@@ -31,6 +31,11 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         filterBtn.setOnClickListener(this);
     }
 
+    protected void updateToolbarTitle(String text) {
+        toolbarTitle.setText(text);
+        toolbarTitle.setTextSize(new Float(getResources().getDimension(R.dimen.font_xxxsmall)));
+    }
+
     @Override
     public void onClick(View view) {
 

@@ -16,4 +16,13 @@
         <item name="colorControlNormal">@android:color/white</item>
     </style>
 
+
+    <style name="SearchViewTheme" >
+        <item name="android:textSize">@dimen/font_xxxsmall</item>
+        <item name="colorControlActivated">#efefef</item>
+        <item name="colorControlNormal">#efefef</item>
+        <item name="android:textColorHint">#999999</item>
+        <item name="android:editTextColor">#707070</item>
+    </style>
+
 </resources>

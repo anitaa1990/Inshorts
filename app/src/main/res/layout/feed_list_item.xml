@@ -5,18 +5,15 @@
     android:id="@+id/root_view"
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/padding_large"
-    android:paddingLeft="@dimen/padding_large"
-    android:paddingRight="@dimen/padding_large"
-    android:paddingBottom="@dimen/padding_large"
-    android:clickable="false"
-    android:focusable="false"
-    android:focusableInTouchMode="false">
+    android:paddingLeft="@dimen/padding_xlarge"
+    android:paddingRight="@dimen/padding_xxxlarge"
+    android:paddingBottom="@dimen/padding_large">
 
 
     <com.an.customfontview.CustomTextView
         android:id="@+id/feed_headlines"
         android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_xxlarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/toolbar_text_color"
@@ -29,9 +26,9 @@
     <com.an.customfontview.CustomTextView
         android:id="@+id/feed_source"
         android:layout_marginTop="@dimen/margin"
-        android:layout_marginBottom="@dimen/margin_xxlarge"
+        android:layout_marginBottom="@dimen/margin"
         android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_xxlarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/feed_source_text_color"
@@ -39,10 +36,41 @@
         android:text="Hindustan Times"/>
 
 
+    <LinearLayout
+        android:id="@+id/button_view"
+        android:layout_marginBottom="@dimen/margin"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/img_fav"
+            android:src="@drawable/ic_favourite"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:adjustViewBounds="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:id="@+id/img_offline"
+            android:src="@drawable/ic_offline"
+            android:layout_marginLeft="@dimen/margin_xxlarge"
+            android:layout_marginRight="@dimen/margin_large"
+            android:adjustViewBounds="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+    </LinearLayout>
+
+
     <View
         android:background="@color/feed_source_line_color"
         android:layout_marginLeft="@dimen/margin_large"
-        android:layout_marginRight="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_xxlarge"
         android:layout_width="match_parent"
         android:layout_height="0.8dp"/>
 
