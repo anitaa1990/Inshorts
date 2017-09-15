@@ -8,6 +8,11 @@
     <color name="activity_main_bg_color">#e9eaed</color>
     <color name="feed_source_text_color">#999999</color>
     <color name="feed_source_line_color">#ebebeb</color>
+    <color name="color_favourite">#c4c4c4</color>
+    <color name="color_favourite_selected">#f12033</color>
+
+    <color name="color_offline">#c4c4c4</color>
+    <color name="color_offine_selected">@android:color/black</color>
 
     <color name="color_1">#6555fd</color>
     <color name="color_2">#faae55</color>

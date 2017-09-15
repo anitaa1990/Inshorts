@@ -43,26 +43,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_gravity="center_vertical"
-            android:id="@+id/img_fav"
-            android:src="@drawable/ic_favourite"
+
+        <com.sackcentury.shinebuttonlib.ShineButton
             android:layout_marginLeft="@dimen/margin_large"
             android:layout_marginRight="@dimen/margin_large"
-            android:adjustViewBounds="true"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/img_fav"
+            app:btn_fill_color="@color/color_favourite_selected"
+            app:allow_random_color="false"
+            app:enable_flashing="false"
+            app:backgroundTint="@color/color_favourite_selected"
+            app:big_shine_color="@color/color_favourite_selected"
+            app:click_animation_duration="200"
+            app:shine_animation_duration="1500"
+            app:shine_turn_angle="10"
+            app:small_shine_offset_angle="20"
+            app:small_shine_color="@color/color_favourite_selected"
+            app:shine_count="10"
+            app:siShape="@raw/ic_heart"/>
 
 
-        <ImageView
+
+        <com.sackcentury.shinebuttonlib.ShineButton
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:id="@+id/img_offline"
-            android:src="@drawable/ic_offline"
-            android:layout_marginLeft="@dimen/margin_xxlarge"
-            android:layout_marginRight="@dimen/margin_large"
-            android:adjustViewBounds="true"
-            android:layout_width="30dp"
-            android:layout_height="30dp" />
+            app:btn_fill_color="@color/color_offine_selected"
+            app:allow_random_color="false"
+            app:enable_flashing="false"
+            app:backgroundTint="@color/color_offine_selected"
+            app:big_shine_color="@color/color_offine_selected"
+            app:click_animation_duration="200"
+            app:shine_animation_duration="1500"
+            app:shine_turn_angle="10"
+            app:small_shine_offset_angle="20"
+            app:small_shine_color="@color/color_offine_selected"
+            app:shine_count="10"
+            app:siShape="@raw/ic_download"/>
 
     </LinearLayout>
 

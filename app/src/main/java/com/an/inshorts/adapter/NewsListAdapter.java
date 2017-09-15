@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.an.inshorts.R;
+import com.an.inshorts.listener.OnViewItemClickListener;
 import com.an.inshorts.model.Feed;
+import com.an.inshorts.service.FeedService;
+import com.sackcentury.shinebuttonlib.ShineButton;
 
 import java.util.List;
 
@@ -17,9 +20,13 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.Custom
 
     private Context context;
     private List<Feed> feedList;
-    public NewsListAdapter(Context context, List<Feed> feedList) {
+    private FeedService feedService;
+    private OnViewItemClickListener clickListener;
+    public NewsListAdapter(Context context, List<Feed> feedList, FeedService feedService, OnViewItemClickListener clickListener) {
         this.context = context;
         this.feedList = feedList;
+        this.feedService = feedService;
+        this.clickListener = clickListener;
     }
 
     @Override
@@ -38,13 +45,12 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.Custom
             holder.headlineTxt.setLineSpacing(new Float(context.getResources().getDimension(R.dimen.margin)), 1f);
             holder.headlineTxt.setTextSize(new Float(context.getResources().getDimension(R.dimen.font_xxxsmall)));
         } else {
-//            holder.rootView.setPadding(new Float(context.getResources().getDimension(R.dimen.padding_large)).intValue(),
-//                    new Float(context.getResources().getDimension(R.dimen.padding_xsmall)).intValue(),
-//                    new Float(context.getResources().getDimension(R.dimen.padding_large)).intValue(),
-//                    new Float(context.getResources().getDimension(R.dimen.padding_xsmall)).intValue());
             holder.headlineTxt.setLineSpacing(3f, 1.5f);
             holder.headlineTxt.setTextSize(new Float(context.getResources().getDimension(R.dimen.font_xxxxsmall)));
         }
+
+        holder.favBtn.setChecked(feedService.isFavourite(feed.getId()));
+        holder.offlineBtn.setChecked(feedService.isOfflineFeed(feed.getId()));
     }
 
     @Override
@@ -56,18 +62,41 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.Custom
         return feedList.get(position);
     }
 
-    public class CustomViewHolder extends RecyclerView.ViewHolder {
+
+    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private View rootView;
-        private View buttonView;
+
         private TextView headlineTxt;
         private TextView sourceTxt;
+
+        private ShineButton favBtn;
+        private ShineButton offlineBtn;
+
         public CustomViewHolder(View itemView) {
             super(itemView);
             rootView = itemView.findViewById(R.id.root_view);
-            buttonView = itemView.findViewById(R.id.button_view);
+            rootView.setOnClickListener(this);
             headlineTxt = itemView.findViewById(R.id.feed_headlines);
             sourceTxt = itemView.findViewById(R.id.feed_source);
+            favBtn = itemView.findViewById(R.id.img_fav);
+            favBtn.setOnClickListener(this);
+            offlineBtn = itemView.findViewById(R.id.img_offline);
+            offlineBtn.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getLayoutPosition();
+            if(view == favBtn) {
+                clickListener.onFavClick(position, favBtn.isChecked());
+
+            } else if(view == offlineBtn) {
+                clickListener.onOfflineClick(position, offlineBtn.isChecked());
+
+            } else {
+                clickListener.onViewClick(position);
+            }
         }
     }
 }

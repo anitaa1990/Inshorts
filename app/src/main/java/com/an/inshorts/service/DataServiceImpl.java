@@ -3,6 +3,9 @@ package com.an.inshorts.service;
 
 import android.content.Context;
 
+import com.an.inshorts.BaseConstants;
+import com.an.inshorts.db.DbExecutorService;
+import com.an.inshorts.db.FeedDbTask;
 import com.an.inshorts.model.Feed;
 import com.an.inshorts.utils.CollectionUtils;
 
@@ -96,5 +99,35 @@ public class DataServiceImpl extends AbstractServiceImpl implements DataService 
             feeds.add(entry.getValue());
         }
         return feeds;
+    }
+
+    @Override
+    public void addToFavourites(Feed feed) {
+        DbExecutorService.submit(new FeedDbTask(context, BaseConstants.TYPE_ADD_FAVOURITES, feed));
+    }
+
+    @Override
+    public void removeFromFavourites(Feed feed) {
+        DbExecutorService.submit(new FeedDbTask(context, BaseConstants.TYPE_REMOVE_FAVOURITES, feed));
+    }
+
+    @Override
+    public void addToOfflineFeed(Feed feed) {
+        DbExecutorService.submit(new FeedDbTask(context, BaseConstants.TYPE_ADD_OFFLINE, feed));
+    }
+
+    @Override
+    public void removeFromOfflineFeed(Feed feed) {
+        DbExecutorService.submit(new FeedDbTask(context, BaseConstants.TYPE_REMOVE_OFFLINE, feed));
+    }
+
+    @Override
+    public boolean isAddedToFavourite(Long id) {
+        return feedModule.isFavourite(id);
+    }
+
+    @Override
+    public boolean isAvailableOffline(Long id) {
+        return feedModule.isOffline(id);
     }
 }

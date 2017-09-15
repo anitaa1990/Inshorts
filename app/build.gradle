@@ -37,4 +37,7 @@ dependencies {
 
     compile 'com.google.code.gson:gson:2.5'
     compile 'com.android.volley:volley:1.0.0'
+
+
+    compile 'com.sackcentury:shinebutton:0.1.9'
 }

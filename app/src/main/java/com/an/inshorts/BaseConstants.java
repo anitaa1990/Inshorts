@@ -14,6 +14,9 @@ public interface BaseConstants {
     String INTENT_URL = "webview_url";
     String INTENT_CATEGORY_NAME = "categoryName";
 
+    String ACTION_TYPE_FAV = "favourite";
+    String ACTION_TYPE_OFFLINE = "offline";
+    String ACTION_TYPE_URL = "open_url";
 
     String TYPE_ADD_OFFLINE = "add_offline";
     String TYPE_REMOVE_OFFLINE = "remove_offline";
