@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tool_bar"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:minHeight="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+    android:elevation="0dp"
+    android:contentInsetLeft="0dp"
+    android:contentInsetStart="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    android:contentInsetRight="0dp"
+    android:contentInsetEnd="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetEnd="0dp"
+    android:theme="@style/Base.ThemeOverlay.AppCompat.Dark">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <ImageView
+                    android:padding="@dimen/padding"
+                    android:layout_marginLeft="@dimen/margin"
+                    android:layout_alignParentLeft="true"
+                    android:id="@+id/btn_back"
+                    android:src="@drawable/ic_side_menu"
+                    android:adjustViewBounds="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple"/>
+
+
+                <com.an.customfontview.CustomTextView
+                    android:layout_marginLeft="@dimen/margin"
+                    android:id="@+id/toolbar_title"
+                    android:textSize="@dimen/font_xxlarge"
+                    android:text="@string/app_name"
+                    android:textColor="@color/toolbar_text_color"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:textFontPath="fonts/tiempos_h_medium.otf" />
+
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/padding"
+                    android:layout_marginRight="@dimen/margin"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/btn_filter"
+                    android:src="@drawable/ic_sort"
+                    android:adjustViewBounds="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple"/>
+
+
+        </RelativeLayout>
+
+
+
+</android.support.v7.widget.Toolbar>
