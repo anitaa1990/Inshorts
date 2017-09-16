@@ -132,7 +132,7 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
 
 
     @Override
-    public void onItemClick(MenuItem item) {
+    public void onMenuItemClick(MenuItem item) {
         List<Feed> sortedFeed = feedService.sortFeed(item.getTitle(), feeds);
         adapter.updateList(sortedFeed);
     }

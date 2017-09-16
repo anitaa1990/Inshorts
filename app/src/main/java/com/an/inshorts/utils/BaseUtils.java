@@ -1,10 +1,12 @@
 package com.an.inshorts.utils;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
 import com.an.inshorts.BaseConstants;
+import com.an.inshorts.R;
 import com.an.inshorts.model.Feed;
 import com.an.inshorts.model.MenuItem;
 import com.google.gson.Gson;
@@ -16,6 +18,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BaseUtils implements BaseConstants {
@@ -84,6 +87,20 @@ public class BaseUtils implements BaseConstants {
        return CATEGORY.get(name) == null ? FILTER_BY_PUBLISHER : FILTER_BY_CATEGORY;
     }
 
+
+    public static List<MenuItem> getMenuItems(Context context) {
+        List<MenuItem> list = new ArrayList<>();
+
+        List<String> menuTitles = Arrays.asList(context.getResources().getStringArray(R.array.menu_items));
+        TypedArray menuIcons = context.getResources().obtainTypedArray(R.array.menu_icons);
+
+        for(int i = 0; i< menuTitles.size(); i++) {
+            MenuItem slideMenuItem = new MenuItem(menuIcons.getResourceId(i, -1), menuTitles.get(i));
+            list.add(slideMenuItem);
+        }
+        menuIcons.recycle();
+        return list;
+    }
 
     /*
      * You can use this method to store the

@@ -12,6 +12,7 @@ import com.an.inshorts.utils.ConnectivityStatus;
 import com.an.inshorts.utils.NavigatorUtils;
 import com.android.volley.VolleyError;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -88,6 +89,30 @@ public class FeedServiceImpl extends ResponseServiceImpl implements FeedService,
         if(context.getString(R.string.filter_item_1).equalsIgnoreCase(type)) {
             return filterByCategory(data);
         } else return filterByPublisher(data);
+    }
+
+    @Override
+    public Map<String, List<Feed>> fetchFavouriteFeeds() {
+        List<Feed> favourites = getFavouriteFeeds();
+        if(favourites == null || favourites.isEmpty()) {
+            feedChangeListener.showError(context.getString(R.string.error_no_favourites));
+            return null;
+        }
+        Map<String, List<Feed>> favouritesMap = new HashMap<>();
+        favouritesMap.put(context.getString(R.string.menu_item_1), favourites);
+        return favouritesMap;
+    }
+
+    @Override
+    public Map<String, List<Feed>> fetchOfflineFeeds() {
+        List<Feed> offlineFeeds = getOfflineFeeds();
+        if(offlineFeeds == null || offlineFeeds.isEmpty()) {
+            feedChangeListener.showError(context.getString(R.string.error_no_offlines));
+            return null;
+        }
+        Map<String, List<Feed>> offlineMap = new HashMap<>();
+        offlineMap.put(context.getString(R.string.menu_item_2), offlineFeeds);
+        return offlineMap;
     }
 
     @Override

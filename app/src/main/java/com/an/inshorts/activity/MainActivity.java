@@ -6,7 +6,6 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -25,6 +24,7 @@ import com.an.inshorts.views.CustomPageTransformer;
 import com.an.inshorts.views.CustomViewPager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,10 +71,19 @@ public class MainActivity extends BaseActivity implements OnFeedChangeListener, 
     }
 
     @Override
-    public void onItemClick(MenuItem item) {
+    public void onMenuItemClick(MenuItem item) {
         MainFragment fragment = (MainFragment) pagerAdapter.getItem(viewPager.getCurrentItem());
-        Map<String, List<Feed>> filterFeed = feedService.filterFeed(item.getTitle(), fragment.getFeeds());
-        refreshData(filterFeed);
+        Map<String, List<Feed>> filterFeed;
+        if(getString(R.string.menu_item_1).equalsIgnoreCase(item.getTitle())) {
+            filterFeed = feedService.fetchFavouriteFeeds();
+
+        } else if(getString(R.string.menu_item_1).equalsIgnoreCase(item.getTitle())) {
+            filterFeed = feedService.fetchOfflineFeeds();
+
+        } else {
+            filterFeed = feedService.filterFeed(item.getTitle(), fragment.getFeeds());
+        }
+        if(filterFeed != null) refreshData(filterFeed);
     }
 
     private void refreshData(Map<String, List<Feed>> feeds) {

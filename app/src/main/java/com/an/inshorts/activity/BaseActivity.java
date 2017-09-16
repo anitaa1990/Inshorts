@@ -2,7 +2,6 @@ package com.an.inshorts.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,12 +11,13 @@ import com.an.inshorts.BaseConstants;
 import com.an.inshorts.R;
 import com.an.inshorts.dialogs.BottomSheetHelper;
 import com.an.inshorts.dialogs.CustomBottomSheetDialog;
-import com.an.inshorts.model.MenuItem;
+import com.an.inshorts.listener.MenuItemListener;
 import com.an.inshorts.utils.BaseUtils;
+import com.an.inshorts.views.MenuCreator;
 
 import java.util.Arrays;
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener, CustomBottomSheetDialog.MenuItemListener, BaseConstants {
+public abstract class BaseActivity extends MenuCreator implements View.OnClickListener, MenuItemListener, BaseConstants {
 
     protected Toolbar toolbar;
     protected TextView toolbarTitle;
@@ -84,7 +84,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                             BaseUtils.addMenuItems(Arrays.asList(getResources().getStringArray(R.array.filter_items))), this);
                     break;
             }
-        }
 
+        } else if(view == menuBtn) {
+            initNavigationDrawer(BaseActivity.this);
+            toggleDrawer();
+        }
     }
 }

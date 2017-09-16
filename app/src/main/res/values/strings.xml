@@ -6,6 +6,8 @@
     <string name="sort_item_2">Sort by Oldest First</string>
     <string name="filter_item_1">Filter by Category</string>
     <string name="filter_item_2">Filter by Publisher</string>
+    <string name="menu_item_1">Favourites</string>
+    <string name="menu_item_2">Offline Feed</string>
 
 
     <integer-array name="category_icons">
@@ -25,7 +27,22 @@
         <item>@string/filter_item_2</item>
     </string-array>
 
+    <string-array name="menu_items">
+        <item>@string/menu_item_1</item>
+        <item>@string/menu_item_2</item>
+    </string-array>
+
+    <integer-array name="menu_icons">
+        <item>@raw/ic_heart</item>
+        <item>@raw/ic_download</item>
+    </integer-array>
+
     <string name="generic_http_error">Oops...There seems to be an issue. Please try again</string>
+    <string name="error_no_favourites">There are no favourites at the moment</string>
+    <string name="error_no_offlines">There are no offline feeds at the moment</string>
     <string name="generic_no_internet_error">Oops...You do not seem to have a proper internet connection. Please try again after connecting to a valid internet connection</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
 </resources>

@@ -54,7 +54,7 @@ public class CustomWebViewActivity extends BaseActivity {
     }
 
     @Override
-    public void onItemClick(MenuItem item) {
+    public void onMenuItemClick(MenuItem item) {
 
     }
 }
