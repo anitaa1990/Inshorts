@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.an.inshorts.R;
@@ -14,17 +16,20 @@ import com.an.inshorts.model.Feed;
 import com.an.inshorts.service.FeedService;
 import com.sackcentury.shinebuttonlib.ShineButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.CustomViewHolder> {
+public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.CustomViewHolder> implements Filterable {
 
     private Context context;
     private List<Feed> feedList;
+    private List<Feed> filteredList;
     private FeedService feedService;
     private OnViewItemClickListener clickListener;
     public NewsListAdapter(Context context, List<Feed> feedList, FeedService feedService, OnViewItemClickListener clickListener) {
         this.context = context;
         this.feedList = feedList;
+        this.filteredList = feedList;
         this.feedService = feedService;
         this.clickListener = clickListener;
     }
@@ -65,6 +70,40 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.Custom
     public void updateList(List<Feed> data) {
         feedList = data;
         notifyDataSetChanged();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+
+                if(charString.isEmpty()) {
+                    feedList = filteredList;
+
+                } else {
+                    List<Feed> filteredList = new ArrayList<>();
+                    for (Feed feed : feedList) {
+                        if(feed.getTitle().toLowerCase().contains(charString) ||
+                                feed.getPublisher().toLowerCase().contains(charString)) {
+                            filteredList.add(feed);
+                        }
+                    }
+                    feedList = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = feedList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                feedList = (List<Feed>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
 
