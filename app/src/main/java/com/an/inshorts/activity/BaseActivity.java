@@ -39,10 +39,12 @@ public abstract class BaseActivity extends MenuCreator implements View.OnClickLi
     }
 
     protected void updateBackButton() {
+        menuBtn.setTag(R.drawable.ic_back);
         menuBtn.setImageResource(R.drawable.ic_back);
     }
 
     protected void updateMenuButton() {
+        menuBtn.setTag(R.drawable.ic_side_menu);
         menuBtn.setImageResource(R.drawable.ic_side_menu);
     }
 
@@ -86,8 +88,18 @@ public abstract class BaseActivity extends MenuCreator implements View.OnClickLi
             }
 
         } else if(view == menuBtn) {
-            initNavigationDrawer(BaseActivity.this);
-            toggleDrawer();
+            int tag = (Integer) menuBtn.getTag();
+            switch (tag) {
+                case R.drawable.ic_side_menu :
+                    initNavigationDrawer(BaseActivity.this);
+                    toggleDrawer();
+                    break;
+
+                case R.drawable.ic_back :
+                    onBackPressed();
+                    break;
+            }
+
         }
     }
 }
