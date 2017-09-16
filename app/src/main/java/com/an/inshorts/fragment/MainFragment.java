@@ -16,6 +16,7 @@ import com.an.inshorts.R;
 import com.an.inshorts.activity.FeedListActivity;
 import com.an.inshorts.adapter.FeedListAdapter;
 import com.an.inshorts.model.Feed;
+import com.an.inshorts.utils.NavigatorUtils;
 import com.an.inshorts.views.RecyclerItemClickListener;
 
 import java.io.Serializable;
@@ -87,10 +88,7 @@ public class MainFragment extends BaseFragment implements RecyclerItemClickListe
 
     @Override
     public void onItemClick(View childView, int position) {
-        Intent intent = new Intent(activity, FeedListActivity.class);
-        intent.putExtra("feed", (Serializable) categories);
-        intent.putExtra("categoryName", categoryName);
-        startActivity(intent);
+        NavigatorUtils.openFeedScreen(activity, categoryName, categories);
     }
 
     @Override

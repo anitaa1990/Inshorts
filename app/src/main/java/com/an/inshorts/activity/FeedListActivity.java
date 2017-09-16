@@ -68,7 +68,7 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
     private void initFeed() {
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        feeds = (List<Feed>) getIntent().getSerializableExtra("feed");
+        feeds = (List<Feed>) getIntent().getSerializableExtra(INTENT_FEED);
         adapter = new NewsListAdapter(this, feeds, feedService, this);
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new PaginationScrollListener(linearLayoutManager) {

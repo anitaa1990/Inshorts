@@ -13,6 +13,7 @@ public interface BaseConstants {
     String METHOD_NEWS_FEED = "news_feed";
     String INTENT_URL = "webview_url";
     String INTENT_CATEGORY_NAME = "categoryName";
+    String INTENT_FEED = "intent_feed";
 
     String FILTER_BY_CATEGORY = "category";
     String FILTER_BY_PUBLISHER = "publisher";
