@@ -5,6 +5,7 @@ import com.an.inshorts.utils.BaseUtils;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FeedDb implements Serializable {
@@ -27,6 +28,7 @@ public class FeedDb implements Serializable {
         BaseUtils.writeObjectToDisk(instance);
     }
 
+    private List<Feed> feedList;
     private Map<Long, Feed> favFeeds;
     private Map<Long, Feed> offlineFeeds;
 
@@ -83,5 +85,14 @@ public class FeedDb implements Serializable {
 
     public boolean isOffline(long feedId) {
         return getOfflineFeeds().containsKey(feedId);
+    }
+
+    public List<Feed> getFeedList() {
+        return feedList;
+    }
+
+    public void setFeedList(List<Feed> feedList) {
+        this.feedList = feedList;
+        saveToDisk();
     }
 }

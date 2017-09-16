@@ -40,8 +40,8 @@ public class DataServiceImpl extends AbstractServiceImpl implements DataService 
     @Override
     public Map<String, List<Feed>> filterByCategory(List<Feed> data) {
         Map<String, List<Feed>> finalMap = new HashMap<>();
-
-        for(Feed feed : data) {
+        List<Feed> feeds = getFeeds();
+        for(Feed feed : feeds) {
             if (!finalMap.containsKey(feed.getCategory())) {
                 List<Feed> list = new ArrayList<Feed>();
                 list.add(feed);
@@ -99,6 +99,16 @@ public class DataServiceImpl extends AbstractServiceImpl implements DataService 
             feeds.add(entry.getValue());
         }
         return feeds;
+    }
+
+    @Override
+    public List<Feed> getFeeds() {
+        return feedModule.getFeedsFromDb();
+    }
+
+    @Override
+    public void addFeedToDb(List<Feed> feeds) {
+        DbExecutorService.submit(new FeedDbTask(context, BaseConstants.TYPE_ADD_FEED, feeds));
     }
 
     @Override

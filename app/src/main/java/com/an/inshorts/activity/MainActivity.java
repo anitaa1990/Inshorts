@@ -6,8 +6,10 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.an.inshorts.R;
@@ -30,10 +32,10 @@ import java.util.Map;
 public class MainActivity extends BaseActivity implements OnFeedChangeListener, ViewPager.OnPageChangeListener {
 
     private ImageView imgCategory;
+    private View progressView;
 
     private CustomViewPager viewPager;
     private MainPagerAdapter pagerAdapter;
-    private List<Feed> feedList;
 
     private List<MainFragment> fragments = new ArrayList<>();
 
@@ -53,15 +55,14 @@ public class MainActivity extends BaseActivity implements OnFeedChangeListener, 
         updateToolbarTitle(getString(R.string.app_name));
 
         feedService = new FeedServiceImpl(this, this);
+        feedService.handleAction(ACTION_TYPE_GET_FEED, null, false);
 
+        progressView = findViewById(R.id.progress_view);
+        progressView.setVisibility(View.VISIBLE);
         viewPager = (CustomViewPager) findViewById(R.id.viewpager);
         imgCategory = (ImageView) findViewById(R.id.img_category);
 
         pagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), fragments);
-        feedList = BaseUtils.loadDummyData(this);
-        Map<String, List<Feed>> feeds = feedService.filterFeed(getString(R.string.filter_item_1), feedList);
-        refreshData(feeds);
-
         viewPager.setAdapter(pagerAdapter);
         viewPager.setPageTransformer(true, new CustomPageTransformer());
 
@@ -71,15 +72,20 @@ public class MainActivity extends BaseActivity implements OnFeedChangeListener, 
 
     @Override
     public void onItemClick(MenuItem item) {
-        Map<String, List<Feed>> filterFeed = feedService.filterFeed(item.getTitle(), feedList);
+        MainFragment fragment = (MainFragment) pagerAdapter.getItem(viewPager.getCurrentItem());
+        Map<String, List<Feed>> filterFeed = feedService.filterFeed(item.getTitle(), fragment.getFeeds());
         refreshData(filterFeed);
     }
 
     private void refreshData(Map<String, List<Feed>> feeds) {
+        progressView.setVisibility(View.GONE);
         int i = 0;
         if(pagerAdapter != null) pagerAdapter.removeFragments();
         for(Map.Entry<String, List<Feed>> entry : feeds.entrySet()) {
-            pagerAdapter.addFragment(MainFragment.newInstance(i, entry.getKey(), entry.getValue()));
+            List<Feed> subList = new ArrayList<>();
+            if(entry.getValue().size() <= 20) subList.addAll(entry.getValue());
+            else subList.addAll(entry.getValue().subList(0, 20));
+            pagerAdapter.addFragment(MainFragment.newInstance(i, entry.getKey(), subList));
             i++;
         }
         pagerAdapter.refreshAdapter();
@@ -103,5 +109,15 @@ public class MainActivity extends BaseActivity implements OnFeedChangeListener, 
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public void showError(String message) {
+        BaseUtils.showSnackBar(message, findViewById(R.id.root_view));
+    }
+
+    @Override
+    public void refreshFeed(Map<String, List<Feed>> data) {
+        refreshData(data);
     }
 }

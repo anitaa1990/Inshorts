@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.an.inshorts.BaseConstants;
 import com.an.inshorts.R;
 import com.an.inshorts.dialogs.BottomSheetHelper;
 import com.an.inshorts.dialogs.CustomBottomSheetDialog;
@@ -16,7 +17,7 @@ import com.an.inshorts.utils.BaseUtils;
 
 import java.util.Arrays;
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener, CustomBottomSheetDialog.MenuItemListener {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener, CustomBottomSheetDialog.MenuItemListener, BaseConstants {
 
     protected Toolbar toolbar;
     protected TextView toolbarTitle;

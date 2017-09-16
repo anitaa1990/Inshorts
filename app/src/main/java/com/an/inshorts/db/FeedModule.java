@@ -2,6 +2,8 @@ package com.an.inshorts.db;
 
 
 import com.an.inshorts.model.Feed;
+
+import java.util.List;
 import java.util.Map;
 
 
@@ -53,5 +55,13 @@ public class FeedModule {
 
     public Map<Long, Feed> getOfflineFeeds() {
         return feedDb.getOfflineFeeds();
+    }
+
+    public void addFeeds(List<Feed> feeds) {
+        feedDb.setFeedList(feeds);
+    }
+
+    public List<Feed> getFeedsFromDb() {
+        return feedDb.getFeedList();
     }
 }

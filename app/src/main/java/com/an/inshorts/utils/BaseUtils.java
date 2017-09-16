@@ -3,8 +3,6 @@ package com.an.inshorts.utils;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.view.View;
-
-import com.an.inshorts.R;
 import com.an.inshorts.model.Feed;
 import com.an.inshorts.model.MenuItem;
 import com.google.gson.Gson;
@@ -56,14 +54,13 @@ public class BaseUtils {
 
 
     /*
-     * Method to read test json file from raw folder
+     * Method to read the json string from response
      * The string is converted into a list using gson library
      * */
 
-    public static List<Feed> loadDummyData(Context context) {
-        String feedJson = getJSONStringFromRaw(context, R.raw.test_feed);
+    public static List<Feed> loadFeedData(String requestJson) {
         Type listType = new TypeToken<List<Feed>>() {}.getType();
-        List<Feed> feeds = new Gson().fromJson(feedJson, listType);
+        List<Feed> feeds = new Gson().fromJson(requestJson, listType);
         return feeds;
     }
 

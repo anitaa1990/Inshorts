@@ -25,4 +25,7 @@
         <item>@string/filter_item_2</item>
     </string-array>
 
+    <string name="generic_http_error">Oops...There seems to be an issue. Please try again</string>
+    <string name="generic_no_internet_error">Oops...You do not seem to have a proper internet connection. Please try again after connecting to a valid internet connection</string>
+
 </resources>

@@ -1,11 +1,14 @@
 package com.an.inshorts.service;
 
 import android.content.Context;
-
 import com.an.inshorts.R;
 import com.an.inshorts.callback.RESTListener;
 import com.an.inshorts.listener.OnFeedChangeListener;
 import com.an.inshorts.model.Feed;
+import com.an.inshorts.rest.RESTAPITask;
+import com.an.inshorts.rest.RESTExecutorService;
+import com.an.inshorts.utils.BaseUtils;
+import com.an.inshorts.utils.ConnectivityStatus;
 import com.an.inshorts.utils.NavigatorUtils;
 import com.android.volley.VolleyError;
 
@@ -22,12 +25,22 @@ public class FeedServiceImpl extends ResponseServiceImpl implements FeedService,
 
     @Override
     public void onSuccess(Object response) {
-
+        /* Store the list in local cache
+         * get 20 items from the list & update the UI
+         * */
+        List<Feed> feeds = BaseUtils.loadFeedData((String) response);
+        addFeedToDb(feeds);
+        Map<String, List<Feed>> feedsMap = filterByCategory(feeds);
+        feedChangeListener.refreshFeed(feedsMap);
     }
 
     @Override
     public void onError(VolleyError error) {
-
+        if(!ConnectivityStatus.isConnected(context)) {
+            feedChangeListener.showError(context.getString(R.string.generic_no_internet_error));
+            return;
+        }
+        feedChangeListener.showError(context.getString(R.string.generic_http_error));
     }
 
     @Override
@@ -42,6 +55,9 @@ public class FeedServiceImpl extends ResponseServiceImpl implements FeedService,
 
         } else if(ACTION_TYPE_URL.equalsIgnoreCase(type)) {
             NavigatorUtils.openWebView(context, feed);
+
+        } else if(ACTION_TYPE_GET_FEED.equalsIgnoreCase(type)) {
+            RESTExecutorService.submit(new RESTAPITask(context, METHOD_NEWS_FEED, this));
         }
     }
 

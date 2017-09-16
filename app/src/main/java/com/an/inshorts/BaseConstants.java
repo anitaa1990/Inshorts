@@ -17,11 +17,13 @@ public interface BaseConstants {
     String ACTION_TYPE_FAV = "favourite";
     String ACTION_TYPE_OFFLINE = "offline";
     String ACTION_TYPE_URL = "open_url";
+    String ACTION_TYPE_GET_FEED = "get_feed";
 
     String TYPE_ADD_OFFLINE = "add_offline";
     String TYPE_REMOVE_OFFLINE = "remove_offline";
     String TYPE_ADD_FAVOURITES = "add_favourites";
     String TYPE_REMOVE_FAVOURITES = "remove_favourites";
+    String TYPE_ADD_FEED = "add_feed";
 
 
     String LOCALE_CACHE_PATH = "/data/data/com.an.inshorts/inshorts.dat";

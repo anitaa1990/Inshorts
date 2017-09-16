@@ -13,6 +13,8 @@ public interface DataService {
     List<Feed> sortFeedDesc(List<Feed> data);
     List<Feed> getFavouriteFeeds();
     List<Feed> getOfflineFeeds();
+    List<Feed> getFeeds();
+    void addFeedToDb(List<Feed> feeds);
     void addToFavourites(Feed feed);
     void removeFromFavourites(Feed feed);
     void addToOfflineFeed(Feed feed);

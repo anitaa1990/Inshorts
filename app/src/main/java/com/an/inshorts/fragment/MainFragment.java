@@ -80,6 +80,10 @@ public class MainFragment extends BaseFragment implements RecyclerItemClickListe
         return rootView;
     }
 
+    public List<Feed> getFeeds() {
+        return categories;
+    }
+
 
     @Override
     public void onItemClick(View childView, int position) {

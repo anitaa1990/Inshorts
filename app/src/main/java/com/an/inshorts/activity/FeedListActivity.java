@@ -24,6 +24,7 @@ import com.an.inshorts.service.FeedService;
 import com.an.inshorts.service.FeedServiceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 public class FeedListActivity extends BaseActivity implements OnViewItemClickListener, OnFeedChangeListener, SearchView.OnQueryTextListener, BaseConstants {
 
@@ -110,5 +111,15 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
         if(newText.isEmpty()) feeds = (List<Feed>) getIntent().getSerializableExtra("feed");
         adapter.getFilter().filter(newText);
         return true;
+    }
+
+    @Override
+    public void showError(String message) {
+
+    }
+
+    @Override
+    public void refreshFeed(Map<String, List<Feed>> data) {
+
     }
 }

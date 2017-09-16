@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root_view"
     android:background="@color/activity_main_bg_color">
 
     <include layout="@layout/view_toolbar"/>
+    <include layout="@layout/view_progress"/>
 
 
 
