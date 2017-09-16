@@ -89,7 +89,7 @@ public class MainFragment extends BaseFragment implements RecyclerItemClickListe
     public void onItemClick(View childView, int position) {
         Intent intent = new Intent(activity, FeedListActivity.class);
         intent.putExtra("feed", (Serializable) categories);
-        intent.putExtra("categoryName", categoryTxt.getText().toString());
+        intent.putExtra("categoryName", categoryName);
         startActivity(intent);
     }
 

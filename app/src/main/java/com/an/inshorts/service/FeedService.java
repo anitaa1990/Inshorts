@@ -13,4 +13,5 @@ public interface FeedService {
     boolean isOfflineFeed(Long id);
     List<Feed> sortFeed(String type, List<Feed> data);
     Map<String, List<Feed>> filterFeed(String type, List<Feed> data);
+    List<Feed> loadMoreFeed(String type, String name, int limit);
 }

@@ -3,6 +3,8 @@ package com.an.inshorts.utils;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
 import android.view.View;
+
+import com.an.inshorts.BaseConstants;
 import com.an.inshorts.model.Feed;
 import com.an.inshorts.model.MenuItem;
 import com.google.gson.Gson;
@@ -16,9 +18,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.an.inshorts.BaseConstants.LOCALE_CACHE_PATH;
-
-public class BaseUtils {
+public class BaseUtils implements BaseConstants {
 
     /*
      * Method to display SnackBar
@@ -78,6 +78,10 @@ public class BaseUtils {
             menuItems.add(menuItem);
         }
         return menuItems;
+    }
+
+    public static String getCurrentGroup(String name) {
+       return CATEGORY.get(name) == null ? FILTER_BY_PUBLISHER : FILTER_BY_CATEGORY;
     }
 
 

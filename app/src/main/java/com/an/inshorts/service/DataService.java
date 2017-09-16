@@ -9,6 +9,8 @@ public interface DataService {
 
     Map<String, List<Feed>> filterByCategory(List<Feed> data);
     Map<String, List<Feed>> filterByPublisher(List<Feed> data);
+    List<Feed> getFeedsByCategory(String name, int limit);
+    List<Feed> getFeedsByPublisher(String name, int limit);
     List<Feed> sortFeedAsc(List<Feed> data);
     List<Feed> sortFeedDesc(List<Feed> data);
     List<Feed> getFavouriteFeeds();

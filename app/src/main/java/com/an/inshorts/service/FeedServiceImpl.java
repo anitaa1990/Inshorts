@@ -18,6 +18,11 @@ import java.util.Map;
 public class FeedServiceImpl extends ResponseServiceImpl implements FeedService, RESTListener {
 
     private OnFeedChangeListener feedChangeListener;
+    public FeedServiceImpl(Context context) {
+        super(context);
+        this.context = context;
+    }
+
     public FeedServiceImpl(Context context, OnFeedChangeListener feedChangeListener) {
         super(context);
         this.feedChangeListener = feedChangeListener;
@@ -83,5 +88,12 @@ public class FeedServiceImpl extends ResponseServiceImpl implements FeedService,
         if(context.getString(R.string.filter_item_1).equalsIgnoreCase(type)) {
             return filterByCategory(data);
         } else return filterByPublisher(data);
+    }
+
+    @Override
+    public List<Feed> loadMoreFeed(String type, String name, int limit) {
+        if(FILTER_BY_CATEGORY.equalsIgnoreCase(type))
+            return getFeedsByCategory(name, limit);
+        else return getFeedsByPublisher(name, limit);
     }
 }

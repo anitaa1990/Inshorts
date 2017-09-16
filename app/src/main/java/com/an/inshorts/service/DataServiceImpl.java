@@ -71,6 +71,27 @@ public class DataServiceImpl extends AbstractServiceImpl implements DataService 
         return finalMap;
     }
 
+    @Override
+    public List<Feed> getFeedsByCategory(String name, int limit) {
+        List<Feed> finalList = new ArrayList<>();
+        List<Feed> feeds = getFeeds().subList(limit, (limit+PAGE_SIZE));
+        for(Feed feed : feeds) {
+            if(name.equalsIgnoreCase(feed.getCategory()))
+                finalList.add(feed);
+        }
+        return finalList;
+    }
+
+    @Override
+    public List<Feed> getFeedsByPublisher(String name, int limit) {
+        List<Feed> finalList = new ArrayList<>();
+        List<Feed> feeds = getFeeds().subList(limit, (limit+PAGE_SIZE));
+        for(Feed feed : feeds) {
+            if(name.equalsIgnoreCase(feed.getPublisher()))
+                finalList.add(feed);
+        }
+        return finalList;
+    }
 
 
     @Override

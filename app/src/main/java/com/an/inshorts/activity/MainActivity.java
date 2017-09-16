@@ -83,8 +83,8 @@ public class MainActivity extends BaseActivity implements OnFeedChangeListener, 
         if(pagerAdapter != null) pagerAdapter.removeFragments();
         for(Map.Entry<String, List<Feed>> entry : feeds.entrySet()) {
             List<Feed> subList = new ArrayList<>();
-            if(entry.getValue().size() <= 20) subList.addAll(entry.getValue());
-            else subList.addAll(entry.getValue().subList(0, 20));
+            if(entry.getValue().size() <= PAGE_SIZE) subList.addAll(entry.getValue());
+            else subList.addAll(entry.getValue().subList(0, PAGE_SIZE));
             pagerAdapter.addFragment(MainFragment.newInstance(i, entry.getKey(), subList));
             i++;
         }

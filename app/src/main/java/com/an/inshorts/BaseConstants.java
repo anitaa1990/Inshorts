@@ -14,6 +14,9 @@ public interface BaseConstants {
     String INTENT_URL = "webview_url";
     String INTENT_CATEGORY_NAME = "categoryName";
 
+    String FILTER_BY_CATEGORY = "category";
+    String FILTER_BY_PUBLISHER = "publisher";
+
     String ACTION_TYPE_FAV = "favourite";
     String ACTION_TYPE_OFFLINE = "offline";
     String ACTION_TYPE_URL = "open_url";
@@ -25,6 +28,7 @@ public interface BaseConstants {
     String TYPE_REMOVE_FAVOURITES = "remove_favourites";
     String TYPE_ADD_FEED = "add_feed";
 
+    int PAGE_SIZE = 20;
 
     String LOCALE_CACHE_PATH = "/data/data/com.an.inshorts/inshorts.dat";
 

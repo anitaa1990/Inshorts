@@ -72,6 +72,18 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.Custom
         notifyDataSetChanged();
     }
 
+    public void add(Feed feed) {
+        feedList.add(feed);
+        notifyItemInserted(feedList.size() - 1);
+    }
+
+    public void addAll(List<Feed> feedResult) {
+        for (Feed feed : feedResult) {
+            add(feed);
+        }
+    }
+
+
     @Override
     public Filter getFilter() {
         return new Filter() {

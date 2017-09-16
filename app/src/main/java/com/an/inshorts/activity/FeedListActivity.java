@@ -3,7 +3,6 @@ package com.an.inshorts.activity;
 
 import android.app.SearchManager;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,17 +15,17 @@ import android.widget.EditText;
 import com.an.inshorts.BaseConstants;
 import com.an.inshorts.R;
 import com.an.inshorts.adapter.NewsListAdapter;
-import com.an.inshorts.listener.OnFeedChangeListener;
 import com.an.inshorts.listener.OnViewItemClickListener;
 import com.an.inshorts.model.Feed;
 import com.an.inshorts.model.MenuItem;
 import com.an.inshorts.service.FeedService;
 import com.an.inshorts.service.FeedServiceImpl;
+import com.an.inshorts.utils.BaseUtils;
+import com.an.inshorts.views.PaginationScrollListener;
 
 import java.util.List;
-import java.util.Map;
 
-public class FeedListActivity extends BaseActivity implements OnViewItemClickListener, OnFeedChangeListener, SearchView.OnQueryTextListener, BaseConstants {
+public class FeedListActivity extends BaseActivity implements OnViewItemClickListener, SearchView.OnQueryTextListener, BaseConstants {
 
     private SearchView searchView;
 
@@ -35,18 +34,29 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
     private List<Feed> feeds;
 
     private FeedService feedService;
+    private String categoryName;
+
+    // Index from which pagination should start (0 is 1st page in our case)
+    private static final int PAGE_START = 0;
+    // Indicates if footer ProgressBar is shown (i.e. next page is loading)
+    private boolean isLoading = false;
+    // If current page is the last page (Pagination will stop after this page load)
+    private boolean isLastPage = false;
+    // indicates the current page which Pagination is fetching.
+    private int currentPage = PAGE_START;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
+        categoryName = getIntent().getStringExtra(INTENT_CATEGORY_NAME);
         initToolbar();
-        updateToolbarTitle(getIntent().getStringExtra(INTENT_CATEGORY_NAME));
+        updateToolbarTitle(CATEGORY.get(categoryName) == null ? categoryName : CATEGORY.get(categoryName));
         updateBackButton();
         displaySortBtn();
 
-        feedService = new FeedServiceImpl(this, this);
+        feedService = new FeedServiceImpl(this);
 
         recyclerView = (RecyclerView) findViewById(R.id.feed_list);
         searchView = (SearchView) findViewById(R.id.search);
@@ -56,10 +66,36 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
     }
 
     private void initFeed() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
         feeds = (List<Feed>) getIntent().getSerializableExtra("feed");
         adapter = new NewsListAdapter(this, feeds, feedService, this);
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new PaginationScrollListener(linearLayoutManager) {
+            @Override
+            protected void loadMoreItems() {
+                isLoading = true;
+                currentPage += 1;
+                final List<Feed> newData = feedService.loadMoreFeed(BaseUtils.getCurrentGroup(categoryName), categoryName, adapter.getItemCount()+1);
+                isLoading = false;
+                adapter.addAll(newData);
+            }
+
+            @Override
+            public int getTotalPageCount() {
+                return 0;
+            }
+
+            @Override
+            public boolean isLastPage() {
+                return isLastPage;
+            }
+
+            @Override
+            public boolean isLoading() {
+                return isLoading;
+            }
+        });
     }
 
 
@@ -111,15 +147,5 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
         if(newText.isEmpty()) feeds = (List<Feed>) getIntent().getSerializableExtra("feed");
         adapter.getFilter().filter(newText);
         return true;
-    }
-
-    @Override
-    public void showError(String message) {
-
-    }
-
-    @Override
-    public void refreshFeed(Map<String, List<Feed>> data) {
-
     }
 }
