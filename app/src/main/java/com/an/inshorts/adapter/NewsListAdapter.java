@@ -62,6 +62,11 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.Custom
         return feedList.get(position);
     }
 
+    public void updateList(List<Feed> data) {
+        feedList = data;
+        notifyDataSetChanged();
+    }
+
 
     public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

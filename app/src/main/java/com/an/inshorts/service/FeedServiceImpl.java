@@ -2,11 +2,15 @@ package com.an.inshorts.service;
 
 import android.content.Context;
 
+import com.an.inshorts.R;
 import com.an.inshorts.callback.RESTListener;
 import com.an.inshorts.listener.OnFeedChangeListener;
 import com.an.inshorts.model.Feed;
 import com.an.inshorts.utils.NavigatorUtils;
 import com.android.volley.VolleyError;
+
+import java.util.List;
+import java.util.Map;
 
 public class FeedServiceImpl extends ResponseServiceImpl implements FeedService, RESTListener {
 
@@ -49,5 +53,19 @@ public class FeedServiceImpl extends ResponseServiceImpl implements FeedService,
     @Override
     public boolean isOfflineFeed(Long id) {
         return isAvailableOffline(id);
+    }
+
+    @Override
+    public List<Feed> sortFeed(String type, List<Feed> data) {
+        if(context.getString(R.string.sort_item_1).equalsIgnoreCase(type)) {
+            return sortFeedDesc(data);
+        } else return sortFeedAsc(data);
+    }
+
+    @Override
+    public Map<String, List<Feed>> filterFeed(String type, List<Feed> data) {
+        if(context.getString(R.string.filter_item_1).equalsIgnoreCase(type)) {
+            return filterByCategory(data);
+        } else return filterByPublisher(data);
     }
 }

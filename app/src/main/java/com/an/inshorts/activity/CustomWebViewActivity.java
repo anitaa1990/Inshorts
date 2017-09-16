@@ -8,6 +8,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.an.inshorts.R;
+import com.an.inshorts.model.MenuItem;
 import com.an.inshorts.utils.ConnectivityStatus;
 import com.an.inshorts.views.CustomWebViewClient;
 
@@ -50,5 +51,10 @@ public class CustomWebViewActivity extends BaseActivity {
         });
 
         webView.loadUrl(getIntent().getStringExtra(INTENT_URL));
+    }
+
+    @Override
+    public void onItemClick(MenuItem item) {
+
     }
 }

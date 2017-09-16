@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/root_view"
+    android:paddingTop="@dimen/padding_large"
+    android:paddingLeft="@dimen/padding_xlarge"
+    android:paddingRight="@dimen/padding_xxxlarge"
+    android:paddingBottom="@dimen/padding_large"
+    android:background="@drawable/ripple">
+
+
+    <LinearLayout
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.sackcentury.shinebuttonlib.ShineButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/menu_img"
+            app:btn_fill_color="@color/color_favourite_selected"
+            app:allow_random_color="false"
+            app:enable_flashing="false"
+            app:backgroundTint="@color/color_favourite_selected"
+            app:big_shine_color="@color/color_favourite_selected"
+            app:click_animation_duration="200"
+            app:shine_animation_duration="1500"
+            app:shine_turn_angle="10"
+            app:small_shine_offset_angle="20"
+            app:small_shine_color="@color/color_favourite_selected"
+            app:shine_count="10"
+            app:siShape="@raw/ic_heart"/>
+
+
+        <com.an.customfontview.CustomTextView
+            android:id="@+id/menu_item"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginBottom="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_xxlarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@drawable/text_selector"
+            android:textSize="@dimen/font_x_medium_large"
+            android:text="Favourites"/>
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginLeft="@dimen/margin_xlarge"
+        android:layout_marginRight="@dimen/margin_xxlarge"
+        android:layout_gravity="center_vertical"
+        android:background="@color/feed_source_line_color"
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"/>
+
+</LinearLayout>

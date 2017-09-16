@@ -12,6 +12,7 @@ import com.an.inshorts.adapter.NewsListAdapter;
 import com.an.inshorts.listener.OnFeedChangeListener;
 import com.an.inshorts.listener.OnViewItemClickListener;
 import com.an.inshorts.model.Feed;
+import com.an.inshorts.model.MenuItem;
 import com.an.inshorts.service.FeedService;
 import com.an.inshorts.service.FeedServiceImpl;
 
@@ -21,6 +22,7 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
 
     private RecyclerView recyclerView;
     private NewsListAdapter adapter;
+    private List<Feed> feeds;
 
     private FeedService feedService;
 
@@ -38,7 +40,8 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
 
         recyclerView = (RecyclerView) findViewById(R.id.feed_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new NewsListAdapter(this, (List<Feed>) getIntent().getSerializableExtra("feed"), feedService, this);
+        feeds = (List<Feed>) getIntent().getSerializableExtra("feed");
+        adapter = new NewsListAdapter(this, feeds, feedService, this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -55,5 +58,12 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
     @Override
     public void onViewClick(int position) {
         feedService.handleAction(ACTION_TYPE_URL, adapter.getItem(position), false);
+    }
+
+
+    @Override
+    public void onItemClick(MenuItem item) {
+        List<Feed> sortedFeed = feedService.sortFeed(item.getTitle(), feeds);
+        adapter.updateList(sortedFeed);
     }
 }

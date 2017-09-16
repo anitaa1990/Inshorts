@@ -28,6 +28,14 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
         return fragment;
     }
 
+    @Override
+    public int getItemPosition(Object object) {
+        int position = fragments.indexOf(object);
+        if (position >= 0) {
+            return position;
+        } else return POSITION_NONE;
+    }
+
     public void addFragment(MainFragment fragment) {
         fragments.add(fragment);
     }

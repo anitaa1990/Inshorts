@@ -2,6 +2,11 @@
     <string name="app_name">InShorts</string>
     <string name="search_hint">Search...</string>
 
+    <string name="sort_item_1">Sort by Newest First</string>
+    <string name="sort_item_2">Sort by Oldest First</string>
+    <string name="filter_item_1">Filter by Category</string>
+    <string name="filter_item_2">Filter by Publisher</string>
+
 
     <integer-array name="category_icons">
         <item>@drawable/ic_business</item>
@@ -9,4 +14,15 @@
         <item>@drawable/ic_business</item>
         <item>@drawable/ic_tech</item>
     </integer-array>
+
+    <string-array name="sort_items">
+        <item>@string/sort_item_1</item>
+        <item>@string/sort_item_2</item>
+    </string-array>
+
+    <string-array name="filter_items">
+        <item>@string/filter_item_1</item>
+        <item>@string/filter_item_2</item>
+    </string-array>
+
 </resources>

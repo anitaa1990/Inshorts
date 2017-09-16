@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.an.inshorts.R;
 import com.an.inshorts.model.Feed;
+import com.an.inshorts.model.MenuItem;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.an.inshorts.BaseConstants.LOCALE_CACHE_PATH;
@@ -65,7 +67,21 @@ public class BaseUtils {
         return feeds;
     }
 
+    public static List<MenuItem> loadMenuItems(Context context, int raw) {
+        String menuJson = getJSONStringFromRaw(context, raw);
+        Type listType = new TypeToken<List<Feed>>() {}.getType();
+        List<MenuItem> menuItems = new Gson().fromJson(menuJson, listType);
+        return menuItems;
+    }
 
+    public static List<MenuItem> addMenuItems(List<String> items) {
+        List<MenuItem> menuItems = new ArrayList<>();
+        for(String s : items) {
+            MenuItem menuItem = new MenuItem(0, s);
+            menuItems.add(menuItem);
+        }
+        return menuItems;
+    }
 
 
     /*

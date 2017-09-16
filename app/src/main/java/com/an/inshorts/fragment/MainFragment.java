@@ -66,11 +66,16 @@ public class MainFragment extends BaseFragment implements RecyclerItemClickListe
         recyclerView.setAdapter(adapter);
 
         categoryTxt = rootView.findViewById(R.id.category_name);
-        categoryTxt.setText(CATEGORY.get(categoryName));
+        categoryTxt.setText(CATEGORY.get(categoryName) == null ? categoryName : CATEGORY.get(categoryName));
 
         categoryImg = rootView.findViewById(R.id.category_img);
+
         TypedArray categoryIcons = activity.getResources().obtainTypedArray(R.array.category_icons);
-        categoryImg.setImageResource(categoryIcons.getResourceId(position, -1));
+        if(position < categoryIcons.length()) {
+            int resourceId = categoryIcons.getResourceId(position, -1);
+            categoryImg.setImageResource(resourceId);
+            categoryIcons.recycle();
+        } else categoryImg.setVisibility(View.INVISIBLE);
 
         return rootView;
     }

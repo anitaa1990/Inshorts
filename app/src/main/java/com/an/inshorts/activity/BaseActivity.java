@@ -9,8 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.an.inshorts.R;
+import com.an.inshorts.dialogs.BottomSheetHelper;
+import com.an.inshorts.dialogs.CustomBottomSheetDialog;
+import com.an.inshorts.model.MenuItem;
+import com.an.inshorts.utils.BaseUtils;
 
-public class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.Arrays;
+
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener, CustomBottomSheetDialog.MenuItemListener {
 
     protected Toolbar toolbar;
     protected TextView toolbarTitle;
@@ -53,15 +59,31 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     protected void displaySortBtn() {
+        filterBtn.setTag(R.drawable.ic_sort);
         filterBtn.setImageResource(R.drawable.ic_sort);
     }
 
     protected void displayFilterBtn() {
+        filterBtn.setTag(R.drawable.ic_filters);
         filterBtn.setImageResource(R.drawable.ic_filters);
     }
 
     @Override
     public void onClick(View view) {
+        if(view == filterBtn) {
+            int tag = (Integer) filterBtn.getTag();
+            switch (tag) {
+                case R.drawable.ic_sort :
+                    BottomSheetHelper.getInstance().showBottomSheet(BaseActivity.this,
+                            BaseUtils.addMenuItems(Arrays.asList(getResources().getStringArray(R.array.sort_items))), this);
+                    break;
+
+                case R.drawable.ic_filters :
+                    BottomSheetHelper.getInstance().showBottomSheet(BaseActivity.this,
+                            BaseUtils.addMenuItems(Arrays.asList(getResources().getStringArray(R.array.filter_items))), this);
+                    break;
+            }
+        }
 
     }
 }
