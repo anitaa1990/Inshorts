@@ -18,11 +18,33 @@
     <color name="color_2">#faae55</color>
     <color name="color_3">#37a7ef</color>
     <color name="color_4">#6555fd</color>
+    <color name="color_5">#ff1d34be</color>
+    <color name="color_6">#ff228B22</color>
+    <color name="color_7">#FF6600</color>
+    <color name="color_8">#ffbe224e</color>
+    <color name="color_9">#dca926</color>
+    <color name="color_10">#000000</color>
+    <color name="color_11">#6cc4fc</color>
+    <color name="color_12">#fe566d</color>
+    <color name="color_13">#3682ff</color>
+    <color name="color_14">#7869c0</color>
+    <color name="color_15">#7d9ef1</color>
+    <color name="color_16">#dfb610</color>
+    <color name="color_17">#59d368</color>
+    <color name="color_18">#029d00</color>
+
 
     <integer-array name="colors">
         <item >@color/color_1</item>
         <item >@color/color_2</item>
         <item >@color/color_3</item>
         <item >@color/color_4</item>
+        <item >@color/color_5</item>
+        <item >@color/color_6</item>
+        <item >@color/color_7</item>
+        <item >@color/color_8</item>
+        <item >@color/color_9</item>
+        <item >@color/color_10</item>
+        <item >@color/color_11</item>
     </integer-array>
 </resources>

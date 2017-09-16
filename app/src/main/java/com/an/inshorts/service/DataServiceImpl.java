@@ -40,8 +40,8 @@ public class DataServiceImpl extends AbstractServiceImpl implements DataService 
     @Override
     public Map<String, List<Feed>> filterByCategory(List<Feed> data) {
         Map<String, List<Feed>> finalMap = new HashMap<>();
-        List<Feed> feeds = getFeeds();
-        for(Feed feed : feeds) {
+        if(data == null) data = getFeeds();
+        for(Feed feed : data) {
             if (!finalMap.containsKey(feed.getCategory())) {
                 List<Feed> list = new ArrayList<Feed>();
                 list.add(feed);
@@ -57,7 +57,7 @@ public class DataServiceImpl extends AbstractServiceImpl implements DataService 
     @Override
     public Map<String, List<Feed>> filterByPublisher(List<Feed> data) {
         Map<String, List<Feed>> finalMap = new HashMap<>();
-
+        if(data == null) data = getFeeds();
         for(Feed feed : data) {
             if (!finalMap.containsKey(feed.getPublisher())) {
                 List<Feed> list = new ArrayList<Feed>();

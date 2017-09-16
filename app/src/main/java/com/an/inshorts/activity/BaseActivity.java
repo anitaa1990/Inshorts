@@ -54,6 +54,7 @@ public abstract class BaseActivity extends MenuCreator implements View.OnClickLi
     protected void updateMenuButton() {
         menuBtn.setTag(R.drawable.ic_side_menu);
         menuBtn.setImageResource(R.drawable.ic_side_menu);
+        initNavigationDrawer(BaseActivity.this);
     }
 
     protected void updateToolbarTitle(String text) {
@@ -99,7 +100,6 @@ public abstract class BaseActivity extends MenuCreator implements View.OnClickLi
             int tag = (Integer) menuBtn.getTag();
             switch (tag) {
                 case R.drawable.ic_side_menu :
-                    initNavigationDrawer(BaseActivity.this);
                     toggleDrawer();
                     break;
 

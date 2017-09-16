@@ -8,6 +8,7 @@
     <string name="filter_item_2">Filter by Publisher</string>
     <string name="menu_item_1">Favourites</string>
     <string name="menu_item_2">Offline Feed</string>
+    <string name="menu_item_3">My Feed</string>
 
 
     <integer-array name="category_icons">
@@ -30,11 +31,13 @@
     <string-array name="menu_items">
         <item>@string/menu_item_1</item>
         <item>@string/menu_item_2</item>
+        <item>@string/menu_item_3</item>
     </string-array>
 
     <integer-array name="menu_icons">
         <item>@raw/ic_heart</item>
         <item>@raw/ic_download</item>
+        <item>@drawable/ic_tech</item>
     </integer-array>
 
     <string name="generic_http_error">Oops...There seems to be an issue. Please try again</string>

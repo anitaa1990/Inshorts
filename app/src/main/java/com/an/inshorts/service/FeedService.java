@@ -9,6 +9,7 @@ import java.util.Map;
 public interface FeedService {
 
     void handleAction(String type, Feed feed, boolean checked);
+    Map<String, List<Feed>> handleMenuItemClick(String method, List<Feed> data);
     boolean isFavourite(Long id);
     boolean isOfflineFeed(Long id);
     List<Feed> sortFeed(String type, List<Feed> data);

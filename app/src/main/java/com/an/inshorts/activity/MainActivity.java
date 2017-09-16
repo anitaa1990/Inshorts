@@ -24,7 +24,6 @@ import com.an.inshorts.views.CustomPageTransformer;
 import com.an.inshorts.views.CustomViewPager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -74,22 +73,14 @@ public class MainActivity extends BaseActivity implements OnFeedChangeListener, 
     @Override
     public void onMenuItemClick(MenuItem item) {
         MainFragment fragment = (MainFragment) pagerAdapter.getItem(viewPager.getCurrentItem());
-        Map<String, List<Feed>> filterFeed;
-        if(getString(R.string.menu_item_1).equalsIgnoreCase(item.getTitle())) {
-            filterFeed = feedService.fetchFavouriteFeeds();
-
-        } else if(getString(R.string.menu_item_1).equalsIgnoreCase(item.getTitle())) {
-            filterFeed = feedService.fetchOfflineFeeds();
-
-        } else {
-            filterFeed = feedService.filterFeed(item.getTitle(), fragment.getFeeds());
-        }
+        Map<String, List<Feed>> filterFeed = feedService.handleMenuItemClick(item.getTitle(), fragment.getFeeds());
         if(filterFeed != null) refreshData(filterFeed);
     }
 
     private void refreshData(Map<String, List<Feed>> feeds) {
         progressView.setVisibility(View.GONE);
         enableFilterBtn();
+
         int i = 0;
         if(pagerAdapter != null) pagerAdapter.removeFragments();
         for(Map.Entry<String, List<Feed>> entry : feeds.entrySet()) {

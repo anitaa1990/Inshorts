@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 
-public class BaseFragment extends Fragment {
+import com.an.inshorts.BaseConstants;
+
+public class BaseFragment extends Fragment implements BaseConstants {
 
     protected Activity activity;
 

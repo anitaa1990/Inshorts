@@ -68,6 +68,22 @@ public class FeedServiceImpl extends ResponseServiceImpl implements FeedService,
     }
 
     @Override
+    public Map<String, List<Feed>> handleMenuItemClick(String method, List<Feed> data) {
+        if(context.getString(R.string.menu_item_1).equalsIgnoreCase(method)) {
+            return fetchFavouriteFeeds();
+
+        } else if(context.getString(R.string.menu_item_2).equalsIgnoreCase(method)) {
+            return fetchOfflineFeeds();
+
+        } else if(context.getString(R.string.menu_item_3).equalsIgnoreCase(method)) {
+            return filterByCategory(null);
+
+        } else {
+            return filterFeed(method, data);
+        }
+    }
+
+    @Override
     public boolean isFavourite(Long id) {
         return isAddedToFavourite(id);
     }
@@ -87,8 +103,8 @@ public class FeedServiceImpl extends ResponseServiceImpl implements FeedService,
     @Override
     public Map<String, List<Feed>> filterFeed(String type, List<Feed> data) {
         if(context.getString(R.string.filter_item_1).equalsIgnoreCase(type)) {
-            return filterByCategory(data);
-        } else return filterByPublisher(data);
+            return filterByCategory(null);
+        } else return filterByPublisher(null);
     }
 
     @Override

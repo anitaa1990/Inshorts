@@ -14,6 +14,7 @@ public interface BaseConstants {
     String INTENT_URL = "webview_url";
     String INTENT_CATEGORY_NAME = "categoryName";
     String INTENT_FEED = "intent_feed";
+    String INTENT_CATEGORIES = "categories";
 
     String FILTER_BY_CATEGORY = "category";
     String FILTER_BY_PUBLISHER = "publisher";

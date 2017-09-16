@@ -20,8 +20,6 @@ import com.an.inshorts.views.RecyclerItemClickListener;
 import java.io.Serializable;
 import java.util.List;
 
-import static com.an.inshorts.BaseConstants.CATEGORY;
-
 public class MainFragment extends BaseFragment implements RecyclerItemClickListener.OnItemClickListener {
 
     private String categoryName;
@@ -37,9 +35,9 @@ public class MainFragment extends BaseFragment implements RecyclerItemClickListe
     public static MainFragment newInstance(int position, String categoryName, List<Feed> categories) {
         MainFragment fragment = new MainFragment();
         Bundle args = new Bundle();
-        args.putString("categoryName", categoryName);
+        args.putString(INTENT_CATEGORY_NAME, categoryName);
         args.putInt("position", position);
-        args.putSerializable("categories", (Serializable) categories);
+        args.putSerializable(INTENT_CATEGORIES, (Serializable) categories);
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,8 +45,8 @@ public class MainFragment extends BaseFragment implements RecyclerItemClickListe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        categories = (List<Feed>) getArguments().getSerializable("categories");
-        categoryName = getArguments().getString("categoryName");
+        categories = (List<Feed>) getArguments().getSerializable(INTENT_CATEGORIES);
+        categoryName = getArguments().getString(INTENT_CATEGORY_NAME);
         position = getArguments().getInt("position");
     }
 
@@ -69,12 +67,15 @@ public class MainFragment extends BaseFragment implements RecyclerItemClickListe
 
         categoryImg = rootView.findViewById(R.id.category_img);
 
-        TypedArray categoryIcons = activity.getResources().obtainTypedArray(R.array.category_icons);
-        if(position < categoryIcons.length()) {
-            int resourceId = categoryIcons.getResourceId(position, -1);
-            categoryImg.setImageResource(resourceId);
-            categoryIcons.recycle();
-        } else categoryImg.setVisibility(View.INVISIBLE);
+        if(CATEGORY.get(categoryName) != null) {
+            TypedArray categoryIcons = activity.getResources().obtainTypedArray(R.array.category_icons);
+            if(position < categoryIcons.length()) {
+                int resourceId = categoryIcons.getResourceId(position, -1);
+                categoryImg.setImageResource(resourceId);
+                categoryIcons.recycle();
+            } else categoryImg.setVisibility(View.INVISIBLE);
+        } else categoryImg.setVisibility(View.GONE);
+
 
         return rootView;
     }

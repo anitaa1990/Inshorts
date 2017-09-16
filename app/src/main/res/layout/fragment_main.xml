@@ -34,7 +34,7 @@
                 android:textSize="@dimen/font_xlarge"
                 android:text="Tech"
                 android:ellipsize="end"
-                android:maxEms="7"
+                android:maxEms="5"
                 android:textColor="@android:color/white"
                 app:textFontPath="fonts/tiempos_h_medium.otf"/>
 

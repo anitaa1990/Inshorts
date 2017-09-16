@@ -133,7 +133,7 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
 
     @Override
     public void onMenuItemClick(MenuItem item) {
-        List<Feed> sortedFeed = feedService.sortFeed(item.getTitle(), feeds);
+        List<Feed> sortedFeed = feedService.sortFeed(item.getTitle(), adapter.getAllItems());
         adapter.updateList(sortedFeed);
     }
 
@@ -144,7 +144,6 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        if(newText.isEmpty()) feeds = (List<Feed>) getIntent().getSerializableExtra("feed");
         adapter.getFilter().filter(newText);
         return true;
     }

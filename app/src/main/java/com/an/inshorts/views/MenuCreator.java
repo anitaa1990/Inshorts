@@ -48,6 +48,7 @@ public class MenuCreator extends AppCompatActivity implements NavigationView.OnN
 
     private void setUpMenuList() {
         mDrawerList.setLayoutManager(new LinearLayoutManager(this));
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
         List<com.an.inshorts.model.MenuItem> menuItems = BaseUtils.getMenuItems(this);
         menuItemAdapter = new MenuItemAdapter(menuItems);

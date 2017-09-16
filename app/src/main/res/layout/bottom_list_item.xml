@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/padding_xlarge"
     android:paddingRight="@dimen/padding_xxxlarge"
     android:paddingBottom="@dimen/padding_large"
-    android:background="@drawable/ripple">
+    android:background="@drawable/list_selector"
+    android:clickable="true">
 
 
     <LinearLayout
@@ -47,9 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@drawable/text_selector"
-            android:textSize="@dimen/font_x_medium_large"
-            android:text="Favourites"
-            app:textFontPath="fonts/tiempos_h_medium.otf"/>
+            android:textSize="@dimen/font_x_medium_large"/>
 
     </LinearLayout>
 
