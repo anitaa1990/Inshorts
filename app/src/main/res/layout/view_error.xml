@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/error_view">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="@dimen/margin_xxxxxlarge"
+        android:layout_marginLeft="@dimen/margin_xxxxxlarge"
+        android:layout_marginRight="@dimen/margin_xxxxxlarge"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.an.customfontview.CustomTextView
+            android:padding="@dimen/padding_large"
+            android:id="@+id/error_txt"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin"
+            android:layout_marginBottom="@dimen/margin"
+            android:lineSpacingExtra="10dp"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_xxlarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@drawable/text_selector"
+            android:textSize="@dimen/font_large"
+            android:text="@string/error_expired_url"
+            app:textFontPath="fonts/tiempos_h_medium.otf"/>
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

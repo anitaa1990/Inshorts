@@ -40,6 +40,7 @@
     <string name="generic_http_error">Oops...There seems to be an issue. Please try again</string>
     <string name="error_no_favourites">There are no favourites at the moment</string>
     <string name="error_no_offlines">There are no offline feeds at the moment</string>
+    <string name="error_expired_url">Sorry! The page you were looking for cannot be found.\n\nThe page may no longer exist or may have moved to another web address.\n\nThank you</string>
     <string name="generic_no_internet_error">Oops...You do not seem to have a proper internet connection. Please try again after connecting to a valid internet connection</string>
 
     <string name="drawer_open">Open</string>

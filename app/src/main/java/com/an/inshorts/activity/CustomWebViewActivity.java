@@ -35,7 +35,7 @@ public class CustomWebViewActivity extends BaseActivity {
         webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
-        webView.setWebViewClient(new CustomWebViewClient());
+        webView.setWebViewClient(new CustomWebViewClient(webView, this));
         webView.getSettings().setAppCachePath(getApplicationContext().getCacheDir().getAbsolutePath());
         webView.getSettings().setAllowFileAccess(true);
         webView.getSettings().setAppCacheEnabled(true);

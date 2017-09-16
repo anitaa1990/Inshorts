@@ -11,4 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <ViewStub
+        android:id="@+id/stub_import"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:inflatedId="@+id/error_view"
+        android:layout="@layout/view_error" />
+
 </LinearLayout>

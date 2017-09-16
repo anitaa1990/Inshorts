@@ -48,7 +48,8 @@
             android:layout_height="wrap_content"
             android:textColor="@drawable/text_selector"
             android:textSize="@dimen/font_x_medium_large"
-            android:text="Favourites"/>
+            android:text="Favourites"
+            app:textFontPath="fonts/tiempos_h_medium.otf"/>
 
     </LinearLayout>
 

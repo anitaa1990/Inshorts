@@ -1,13 +1,27 @@
 package com.an.inshorts.views;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewStub;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.an.inshorts.R;
+
 public class CustomWebViewClient extends WebViewClient {
+
+    private WebView webView;
+    private Activity activity;
+    public CustomWebViewClient(WebView webView, Activity activity) {
+        this.webView = webView;
+        this.activity = activity;
+    }
 
     @Override
     public void onLoadResource(WebView view, String url) {
@@ -27,7 +41,8 @@ public class CustomWebViewClient extends WebViewClient {
     @Override
     public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
         super.onReceivedError(view, request, error);
-
-        //TODO: if no internet connection, inform the user gracefully!
+        webView.setVisibility(View.GONE);
+        ViewStub stub = activity.findViewById(R.id.stub_import);
+        stub.inflate();
     }
 }
