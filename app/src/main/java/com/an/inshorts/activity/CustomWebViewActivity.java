@@ -66,6 +66,9 @@ public class CustomWebViewActivity extends BaseActivity implements View.OnClickL
     public void onClick(View view) {
         if (view == getFilterBtn()) {
             BaseUtils.share(CustomWebViewActivity.this, url);
+
+        } else  if(view == getMenuBtn()) {
+            onBackPressed();
         }
     }
 }

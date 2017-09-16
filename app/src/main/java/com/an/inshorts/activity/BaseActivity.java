@@ -81,6 +81,10 @@ public abstract class BaseActivity extends MenuCreator implements View.OnClickLi
         return filterBtn;
     }
 
+    protected ImageView getMenuBtn() {
+        return menuBtn;
+    }
+
     @Override
     public void onClick(View view) {
         if(view == filterBtn) {
