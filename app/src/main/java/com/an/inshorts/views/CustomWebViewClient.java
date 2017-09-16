@@ -43,6 +43,6 @@ public class CustomWebViewClient extends WebViewClient {
         super.onReceivedError(view, request, error);
         webView.setVisibility(View.GONE);
         ViewStub stub = activity.findViewById(R.id.stub_import);
-        stub.inflate();
+        if(stub != null) stub.inflate();
     }
 }

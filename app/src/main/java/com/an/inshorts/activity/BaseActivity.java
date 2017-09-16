@@ -62,12 +62,9 @@ public abstract class BaseActivity extends MenuCreator implements View.OnClickLi
         toolbarTitle.setTextSize(new Float(getResources().getDimension(R.dimen.font_xxxsmall)));
     }
 
-    protected void hideFilters() {
-        filterBtn.setVisibility(View.GONE);
-    }
-
-    protected void showFilters() {
-        filterBtn.setVisibility(View.VISIBLE);
+    protected void showShareBtn() {
+        filterBtn.setTag(R.drawable.ic_share);
+        filterBtn.setImageResource(R.drawable.ic_share);
     }
 
     protected void displaySortBtn() {
@@ -78,6 +75,10 @@ public abstract class BaseActivity extends MenuCreator implements View.OnClickLi
     protected void displayFilterBtn() {
         filterBtn.setTag(R.drawable.ic_filters);
         filterBtn.setImageResource(R.drawable.ic_filters);
+    }
+
+    protected ImageView getFilterBtn() {
+        return filterBtn;
     }
 
     @Override

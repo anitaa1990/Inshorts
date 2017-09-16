@@ -1,6 +1,8 @@
 package com.an.inshorts.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -135,5 +137,20 @@ public class BaseUtils implements BaseConstants {
     public static Object readObjectFromDisk() {
         ObjectUtil objDataStream = new ObjectUtil();
         return objDataStream.readObjects(LOCALE_CACHE_PATH);
+    }
+
+
+    /*
+     * Method to open share intent to share news
+     * to others
+     * */
+
+
+    public static void share(Activity activity, String message) {
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, message);
+        shareIntent.setType("text/plain");
+        activity.startActivity(Intent.createChooser(shareIntent, "Share news via:"));
     }
 }

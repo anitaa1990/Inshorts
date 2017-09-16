@@ -9,16 +9,18 @@ import android.webkit.WebView;
 
 import com.an.inshorts.R;
 import com.an.inshorts.model.MenuItem;
+import com.an.inshorts.utils.BaseUtils;
 import com.an.inshorts.utils.ConnectivityStatus;
 import com.an.inshorts.views.CustomWebViewClient;
 
 import static com.an.inshorts.BaseConstants.INTENT_CATEGORY_NAME;
 import static com.an.inshorts.BaseConstants.INTENT_URL;
 
-public class CustomWebViewActivity extends BaseActivity {
+public class CustomWebViewActivity extends BaseActivity implements View.OnClickListener {
 
     private WebView webView;
     private View progressView;
+    private String url;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +29,7 @@ public class CustomWebViewActivity extends BaseActivity {
 
         initToolbar();
         updateToolbarTitle(getIntent().getStringExtra(INTENT_CATEGORY_NAME));
-        hideFilters();
+        showShareBtn();
         updateBackButton();
 
         progressView = findViewById(R.id.progress_view);
@@ -50,11 +52,20 @@ public class CustomWebViewActivity extends BaseActivity {
             }
         });
 
-        webView.loadUrl(getIntent().getStringExtra(INTENT_URL));
+        url = getIntent().getStringExtra(INTENT_URL);
+        webView.loadUrl(url);
     }
 
     @Override
     public void onMenuItemClick(MenuItem item) {
 
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        if (view == getFilterBtn()) {
+            BaseUtils.share(CustomWebViewActivity.this, url);
+        }
     }
 }
