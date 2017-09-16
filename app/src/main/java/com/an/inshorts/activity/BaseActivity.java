@@ -38,6 +38,14 @@ public abstract class BaseActivity extends MenuCreator implements View.OnClickLi
         filterBtn.setOnClickListener(this);
     }
 
+    protected void disableFilterBtn() {
+        filterBtn.setEnabled(false);
+    }
+
+    protected void enableFilterBtn() {
+        filterBtn.setEnabled(true);
+    }
+
     protected void updateBackButton() {
         menuBtn.setTag(R.drawable.ic_back);
         menuBtn.setImageResource(R.drawable.ic_back);

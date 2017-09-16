@@ -52,6 +52,7 @@ public class MainActivity extends BaseActivity implements OnFeedChangeListener, 
         initToolbar();
         updateMenuButton();
         displayFilterBtn();
+        disableFilterBtn();
         updateToolbarTitle(getString(R.string.app_name));
 
         feedService = new FeedServiceImpl(this, this);
@@ -88,6 +89,7 @@ public class MainActivity extends BaseActivity implements OnFeedChangeListener, 
 
     private void refreshData(Map<String, List<Feed>> feeds) {
         progressView.setVisibility(View.GONE);
+        enableFilterBtn();
         int i = 0;
         if(pagerAdapter != null) pagerAdapter.removeFragments();
         for(Map.Entry<String, List<Feed>> entry : feeds.entrySet()) {

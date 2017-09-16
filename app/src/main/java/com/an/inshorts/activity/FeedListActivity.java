@@ -103,7 +103,7 @@ public class FeedListActivity extends BaseActivity implements OnViewItemClickLis
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
-        searchView.setIconifiedByDefault(false);
+//        searchView.setIconifiedByDefault(false);
 
         EditText searchEditText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
         searchEditText.setTextSize(new Float(getResources().getDimension(R.dimen.font_xxxxxsmall)));

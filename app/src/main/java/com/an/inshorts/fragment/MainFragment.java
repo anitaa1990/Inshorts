@@ -1,6 +1,5 @@
 package com.an.inshorts.fragment;
 
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.an.inshorts.R;
-import com.an.inshorts.activity.FeedListActivity;
 import com.an.inshorts.adapter.FeedListAdapter;
 import com.an.inshorts.model.Feed;
 import com.an.inshorts.utils.NavigatorUtils;
