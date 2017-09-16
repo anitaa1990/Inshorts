@@ -8,9 +8,8 @@
     android:paddingLeft="@dimen/padding_large"
     android:paddingRight="@dimen/padding_large"
     android:paddingBottom="@dimen/padding_large"
-    android:clickable="false"
-    android:focusable="false"
-    android:focusableInTouchMode="false">
+    android:clickable="true"
+    android:background="@drawable/list_selector">
 
 
     <com.an.customfontview.CustomTextView
@@ -22,7 +21,6 @@
         android:textColor="@color/toolbar_text_color"
         android:textSize="@dimen/font_large"
         android:lineSpacingExtra="@dimen/margin_large"
-        android:text="Priyanka slams Meghan's Vanity Fair cover for being sexist"
         app:textFontPath="fonts/tiempos_h_medium.otf"/>
 
 
@@ -35,8 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/feed_source_text_color"
-        android:textSize="@dimen/font_xsmall"
-        android:text="Hindustan Times"/>
+        android:textSize="@dimen/font_xsmall"/>
 
 
     <View

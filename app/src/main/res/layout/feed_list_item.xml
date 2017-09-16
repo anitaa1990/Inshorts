@@ -7,7 +7,9 @@
     android:paddingTop="@dimen/padding_large"
     android:paddingLeft="@dimen/padding_xlarge"
     android:paddingRight="@dimen/padding_xxxlarge"
-    android:paddingBottom="@dimen/padding_large">
+    android:paddingBottom="@dimen/padding_large"
+    android:clickable="true"
+    android:background="@drawable/list_selector">
 
 
     <com.an.customfontview.CustomTextView
