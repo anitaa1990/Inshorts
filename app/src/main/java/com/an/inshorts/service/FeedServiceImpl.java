@@ -1,6 +1,8 @@
 package com.an.inshorts.service;
 
 import android.content.Context;
+import android.widget.Toast;
+
 import com.an.inshorts.R;
 import com.an.inshorts.callback.RESTListener;
 import com.an.inshorts.listener.OnFeedChangeListener;
@@ -52,12 +54,24 @@ public class FeedServiceImpl extends ResponseServiceImpl implements FeedService,
     @Override
     public void handleAction(String type, Feed feed, boolean checked) {
         if(ACTION_TYPE_FAV.equalsIgnoreCase(type)) {
-            if(checked) addToFavourites(feed);
-            else removeFromFavourites(feed);
+            if(checked) {
+                addToFavourites(feed);
+                BaseUtils.showToast(context, context.getString(R.string.added_to_favs));
+            }
+            else {
+                removeFromFavourites(feed);
+                BaseUtils.showToast(context, context.getString(R.string.removed_from_favs));
+            }
 
         } else if(ACTION_TYPE_OFFLINE.equalsIgnoreCase(type)) {
-            if(checked) addToOfflineFeed(feed);
-            else removeFromOfflineFeed(feed);
+            if(checked) {
+                addToOfflineFeed(feed);
+                BaseUtils.showToast(context, context.getString(R.string.added_to_offine));
+            }
+            else {
+                removeFromOfflineFeed(feed);
+                BaseUtils.showToast(context, context.getString(R.string.removed_from_offline));
+            }
 
         } else if(ACTION_TYPE_URL.equalsIgnoreCase(type)) {
             NavigatorUtils.openWebView(context, feed);

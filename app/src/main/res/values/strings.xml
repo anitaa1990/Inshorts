@@ -49,4 +49,9 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
+    <string name="added_to_favs">Added news to favourites</string>
+    <string name="removed_from_favs">Removed news from favourites</string>
+    <string name="added_to_offine">Added news to Offline feed</string>
+    <string name="removed_from_offline">Removed news from Offline feed</string>
+
 </resources>

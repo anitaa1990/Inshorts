@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.an.inshorts.BaseConstants;
 import com.an.inshorts.R;
@@ -33,6 +34,12 @@ public class BaseUtils implements BaseConstants {
     public static void showSnackBar(String message,
                                     View view) {
         Snackbar.make(view, message,Snackbar.LENGTH_LONG).show();
+    }
+
+
+    public static void showToast(Context context,
+                                 String message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
 
