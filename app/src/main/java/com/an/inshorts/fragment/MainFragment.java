@@ -89,9 +89,4 @@ public class MainFragment extends BaseFragment implements RecyclerItemClickListe
     public void onItemClick(View childView, int position) {
         NavigatorUtils.openFeedScreen(activity, categoryName, categories);
     }
-
-    @Override
-    public void onItemLongPress(View childView, int position) {
-
-    }
 }

@@ -83,9 +83,4 @@ public class MenuCreator extends AppCompatActivity implements NavigationView.OnN
         dismissDrawer();
         listener.onMenuItemClick(menuItemAdapter.getItem(position));
     }
-
-    @Override
-    public void onItemLongPress(View childView, int position) {
-
-    }
 }

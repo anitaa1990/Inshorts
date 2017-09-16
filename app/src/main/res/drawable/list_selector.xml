@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/list_item_selected">
 
-    <item android:drawable="@color/color_offline" android:state_focused="true"/>
-    <item android:drawable="@color/color_offline" android:state_pressed="true"/>
-    <item android:drawable="@color/color_offline" android:state_selected="true"/>
-    <item android:drawable="@android:color/white"/>
-
-</selector>
+    <item
+        android:id="@android:id/mask"
+        android:drawable="@android:color/white" />
+</ripple>

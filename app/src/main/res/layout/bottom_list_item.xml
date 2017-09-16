@@ -47,7 +47,7 @@
             android:layout_marginRight="@dimen/margin_xxlarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@drawable/text_selector"
+            android:textColor="@color/toolbar_text_color"
             android:textSize="@dimen/font_x_medium_large"/>
 
     </LinearLayout>

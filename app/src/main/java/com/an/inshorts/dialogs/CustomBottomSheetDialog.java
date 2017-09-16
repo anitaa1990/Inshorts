@@ -53,9 +53,4 @@ public class CustomBottomSheetDialog extends BottomSheetDialog implements Recycl
         dismiss();
         listener.onMenuItemClick(adapter.getItem(position));
     }
-
-    @Override
-    public void onItemLongPress(View childView, int position) {
-
-    }
 }
