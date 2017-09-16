@@ -56,6 +56,14 @@ public class BaseUtils implements BaseConstants {
     }
 
 
+    public static List<Feed> loadDummyData(Context context) {
+        String requestJson = getJSONStringFromRaw(context, R.raw.test_feed);
+        Type listType = new TypeToken<List<Feed>>() {}.getType();
+        List<Feed> feeds = new Gson().fromJson(requestJson, listType);
+        return feeds;
+    }
+
+
     /*
      * Method to read the json string from response
      * The string is converted into a list using gson library
